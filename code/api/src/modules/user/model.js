@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT
     }
   })
-
+  // Shows db relationships.
   User.associate = function(models) {
     User.hasMany(models.Subscription)
   }

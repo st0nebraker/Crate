@@ -6,6 +6,7 @@ import { UserType } from './types'
 import { create, remove } from './resolvers'
 
 // Create
+// Defines the response to create.
 export const userSignup = {
   type: UserType,
   args: {
@@ -24,10 +25,11 @@ export const userSignup = {
       type: GraphQLString
     }
   },
-  resolve: create
+  resolve: create // Calls the resolver for create
 }
 
 // Remove
+// Defines the format for the response to remove
 export const userRemove = {
   type: UserType,
   args: {
@@ -36,5 +38,7 @@ export const userRemove = {
       type: GraphQLInt
     }
   },
-  resolve: remove
+  resolve: remove // Call resolver for remove
 }
+
+// Looks like we would need to add mutation for user update

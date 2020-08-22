@@ -1,5 +1,7 @@
 'use strict';
 
+// Seed file for users
+
 const bcrypt = require('bcrypt');
 const config = require('../config/server.json');
 const params = require('../config/params.json');

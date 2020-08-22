@@ -1,12 +1,13 @@
 // Imports
 import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken' // JWT is used for auth
 
 // App Imports
 import serverConfig from '../../config/server'
 import params from '../../config/params'
 import models from '../../setup/models'
-
+// Overall Resolvers look to operate similarly to Controllers.
+// These functions are called form the queries and mutations.
 // Create
 export async function create(parentValue, { name, email, password }) {
   // Users exists with same email check
@@ -15,7 +16,7 @@ export async function create(parentValue, { name, email, password }) {
   if (!user) {
     // User does not exists
     const passwordHashed = await bcrypt.hash(password, serverConfig.saltRounds)
-
+    // Similar to Rails controller. Create or throw error
     return await models.User.create({
       name,
       email,
@@ -77,3 +78,6 @@ export async function remove(parentValue, { id }) {
 export async function getGenders() {
   return Object.values(params.user.gender)
 }
+
+// Similar to mutation, if we update user with style column we will 
+// need a resolver for user update.

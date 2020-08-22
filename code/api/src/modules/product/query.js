@@ -43,3 +43,5 @@ export const productTypes = {
   type: new GraphQLList(ProductTypesType),
   resolve: getTypes
 }
+
+// Add query for getting the survey products.

@@ -11,6 +11,7 @@ import RoutePrivate from '../../modules/auth/RoutePrivate'
 const App = () => (
   <Layout>
     <Switch>
+			{/* this is where the route objects with file path & components are read */}
       {Object.values(routes).map((route, index) => (
         route.auth
           ? <RoutePrivate {...route} key={index} path={typeof route.path === 'function' ? route.path() : route.path}/>

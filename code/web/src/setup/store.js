@@ -12,6 +12,7 @@ import * as subscription from '../modules/subscription/api/state'
 import * as crate from '../modules/crate/api/state'
 
 // App Reducer
+//here is where we'll need to add the new reducer for survey
 const appReducer = combineReducers({
   common,
   user,

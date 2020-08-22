@@ -29,6 +29,8 @@ class Item extends PureComponent {
   }
 
   onClickSubscribe = (crateId) => {
+		//where we conditionally check, if state.style-preference !== null
+		//else if it is null, re-direct user to Survey component w/ the react router Link component
     this.setState({
       isLoading: true
     })
@@ -42,7 +44,8 @@ class Item extends PureComponent {
         } else {
           this.props.messageShow('Subscribed successfully.')
 
-          this.props.history.push(userRoutes.subscriptions.path)
+					this.props.history.push(userRoutes.subscriptions.path)
+					//programmatically reroutes user to this file path (rerendering new Component)
         }
       })
       .catch(error => {
@@ -105,4 +108,5 @@ function itemState(state) {
   }
 }
 
+//connect always take mapStateToProps & mapDispatchToProps as the arg, 2nd arg is destructured here
 export default connect(itemState, { create, messageShow, messageHide })(withRouter(Item))

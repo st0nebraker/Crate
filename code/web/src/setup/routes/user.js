@@ -28,3 +28,5 @@ export default {
     auth: true
   }
 }
+//we'll add a style obj here, with file path & component
+//we'll add a survey route obj in the directory above this

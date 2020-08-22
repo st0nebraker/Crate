@@ -19,6 +19,9 @@ export const SUBSCRIPTIONS_GET_FAILURE = 'SUBSCRIPTIONS/GET_FAILURE'
 // Actions
 
 // Get list of subscriptions
+//we'll be making a file like this & state.js for the new Survey directory
+//this is triggered on a button click etc from a Component
+//dispatch sets off all reducers, when type matches w/in the switch, that case runs
 export function getList(isLoading = true) {
   return dispatch => {
     dispatch({
@@ -26,8 +29,9 @@ export function getList(isLoading = true) {
       error: null,
       isLoading
     })
-
-    return axios.post(routeApi, query({
+		//for graphQL, the query's retrieve info, the mutations change the DB & return new value
+		//this is the network request
+		return axios.post(routeApi, query({
       operation: 'subscriptions',
       fields: ['id', 'user { name, email }', 'crate { id, name, description }', 'createdAt']
     }))
@@ -38,7 +42,9 @@ export function getList(isLoading = true) {
             error: null,
             isLoading: false,
             list: response.data.data.subscriptions
-          })
+					}) //resolved promise, another dispatch called w/ response
+						//this time, item property has a value, is rendered on a component
+						//seen on src/user/Subscriptions.js line 56 block
         } else {
           console.error(response)
         }
@@ -52,7 +58,8 @@ export function getList(isLoading = true) {
       })
   }
 }
-
+//we will write an action/api call for retrieving the results
+//&& retrieving survey questions -- unsure how to write this one w/o seeing BE first
 
 // Get list of subscriptions by user
 export function getListByUser(isLoading = true) {

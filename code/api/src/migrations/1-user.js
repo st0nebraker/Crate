@@ -1,4 +1,5 @@
 module.exports = {
+  // Create user table
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('users', {
       id: {
@@ -7,6 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      // each field defined here by type, this would be how we add the style column.
       name: {
         type: Sequelize.STRING
       },
@@ -19,6 +21,10 @@ module.exports = {
       role: {
         type: Sequelize.TEXT
       },
+      // style: {
+      //   allowNull: true,
+      //   type: Sequelize.TEXT
+      // },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -29,6 +35,7 @@ module.exports = {
       }
     });
   },
+  // down gives instruction for rolling back the migration.
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('users');
   }

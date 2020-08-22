@@ -27,13 +27,15 @@ class Item extends PureComponent {
       isLoading: false
     }
   }
-
+//  Tells what to do when you subscribe
   onClickSubscribe = (crateId) => {
 		//where we conditionally check, if state.style-preference !== null
 		//else if it is null, re-direct user to Survey component w/ the react router Link component
     this.setState({
       isLoading: true
     })
+    // When you subscribe for the first time, should open style survey
+    // Check for User.style and if it is null, then load style survey?
 
     this.props.messageShow('Subscribing, please wait...')
 

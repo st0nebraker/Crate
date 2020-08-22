@@ -32,7 +32,7 @@ export function login(userCredentials, isLoading = true) {
       type: LOGIN_REQUEST,
       isLoading
     })
-
+    // The below sends a post request to graphql API
     return axios.post(routeApi, query({
       operation: 'userLogin',
       variables: userCredentials,

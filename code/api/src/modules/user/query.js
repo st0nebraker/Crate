@@ -6,6 +6,7 @@ import { UserType, UserLoginType, UserGenderType } from './types'
 import { getAll, getById, login, getGenders } from './resolvers'
 
 // All
+// Similar to mutations, these all define the JSON response.
 export const users = {
   type: new GraphQLList(UserType),
   resolve: getAll

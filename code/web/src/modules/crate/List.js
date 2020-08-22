@@ -27,6 +27,7 @@ class List extends PureComponent {
   componentDidMount() {
     this.props.getCratesList('ASC')
   }
+// List contains multiple crates items.
 
   render() {
     return (

@@ -5,6 +5,8 @@ import Profile from '../../modules/user/Profile'
 import Subscriptions from '../../modules/user/Subscriptions'
 
 // User routes
+// File contains routes for user
+// Should we add a style survey route?
 export default {
   login: {
     path: '/user/login',

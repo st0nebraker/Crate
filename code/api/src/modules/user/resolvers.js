@@ -81,3 +81,5 @@ export async function getGenders() {
 
 //this file is similar to CRUD functionality
 //resolve(parent, args) (how we get the data from where its store )
+//lacking an update method(will need for extension)
+//if we could add a calculation method in resolvers for the survey

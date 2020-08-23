@@ -5,13 +5,13 @@ import { GraphQLInt, GraphQLString, GraphQLList } from 'graphql'
 import { UserType, UserLoginType, UserGenderType } from './types'
 import { getAll, getById, login, getGenders } from './resolvers'
 
-// All
+// Get all users
 export const users = {
   type: new GraphQLList(UserType),
   resolve: getAll
 }
 
-// By ID
+// Get one user by id
 export const user = {
   type: UserType,
   args: {
@@ -47,5 +47,5 @@ export const userGenders = {
   type: new GraphQLList(UserGenderType),
   resolve: getGenders
 }
-//not really sure but if this app was inclusive, do we even need genders?
+
 //query/mutations interact with FE

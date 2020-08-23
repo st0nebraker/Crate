@@ -6,6 +6,7 @@ export const MESSAGE_SHOW = 'COMMON_MESSAGE_SHOW'
 export const MESSAGE_HIDE = 'COMMON_MESSAGE_HIDE'
 
 // Actions
+//Runs every time a message is displayed on the bottom of the page login, subscription, etc
 export function messageShow(message) {
   return { type: MESSAGE_SHOW, message }
 }

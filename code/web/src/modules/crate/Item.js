@@ -27,12 +27,14 @@ class Item extends PureComponent {
       isLoading: false
     }
   }
-
+  //Joe: runs when user clicks subscribe
   onClickSubscribe = (crateId) => {
+    //Joe: Check store to see if the user has a "style" if they do allow user to subscribe
+    //if user has a style continue with the function else route user to style survey.
     this.setState({
       isLoading: true
     })
-
+    //Joe: maybe some kinda of loading style survey message?
     this.props.messageShow('Subscribing, please wait...')
 
     this.props.create({ crateId })

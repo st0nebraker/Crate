@@ -23,7 +23,7 @@ const Dashboard = () => (
     <AdminMenu/>
 
     {/* Page Content */}
-    <Grid style={{ padding: '2em' }}>
+    <Grid className="ImAGrid" style={{ padding: '2em' }}>
       <GridCell>
         <p style={{ textAlign: 'center', color: grey3 }}>Nothing here yet. Choose an item from admin menu.</p>
       </GridCell>

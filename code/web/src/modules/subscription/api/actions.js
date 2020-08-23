@@ -121,6 +121,7 @@ export function get(slug, isLoading = true) {
 }
 
 // Create subscription
+//Joe: this is where we are fetching the crates that you can subscribe to.
 export function create(variables) {
   return dispatch => {
     return axios.post(routeApi, mutation({

@@ -27,6 +27,7 @@ export function setUser(token, user) {
 
 // Login a user using credentials
 export function login(userCredentials, isLoading = true) {
+  console.log('login button clicked?');
   return dispatch => {
     dispatch({
       type: LOGIN_REQUEST,
@@ -57,6 +58,7 @@ export function login(userCredentials, isLoading = true) {
           error
         })
       })
+      //Runs if there is an error
       .catch(error => {
         dispatch({
           type: LOGIN_RESPONSE,

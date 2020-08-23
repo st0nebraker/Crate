@@ -20,7 +20,7 @@ export function getList(orderBy = 'DESC', isLoading = true) {
   return dispatch => {
     dispatch({
       type: CRATES_GET_LIST_REQUEST,
-      error: null,
+      error: null,  
       isLoading
     })
 
@@ -72,6 +72,7 @@ export function get(slug, isLoading = true) {
           item: response.data.data.crate
         })
       })
+      .then(response => console.log(response))
       .catch(error => {
         dispatch({
           type: CRATES_GET_FAILURE,

@@ -21,3 +21,6 @@ const query = new GraphQLObjectType({
 })
 
 export default query
+
+//query fields are the entry points
+//if we decide to use product, there has to be a one to many relationship (user has one style but style has many users)

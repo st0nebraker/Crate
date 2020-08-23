@@ -43,3 +43,5 @@ export const productTypes = {
   type: new GraphQLList(ProductTypesType),
   resolve: getTypes
 }
+
+//product by style? that might be extension

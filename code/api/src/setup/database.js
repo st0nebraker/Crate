@@ -9,6 +9,8 @@ import databaseConfig from '../config/database.json'
 const databaseConfigEnv = databaseConfig[NODE_ENV]
 
 // Create new database connection
+//Sequelize is the db application that we are using to talk to the FE with GraphQL
+//Sequelize is a promise based Node.js ORM for Postgres, sqlite3, etc.
 const connection = new Sequelize(databaseConfigEnv.database, databaseConfigEnv.username, databaseConfigEnv.password, {
   host: databaseConfigEnv.host,
   dialect: databaseConfigEnv.dialect,
@@ -28,3 +30,5 @@ connection
   })
 
 export default connection
+
+//this file sets up the db

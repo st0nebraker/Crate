@@ -77,3 +77,7 @@ export async function remove(parentValue, { id }) {
 export async function getGenders() {
   return Object.values(params.user.gender)
 }
+
+
+//this file is similar to CRUD functionality
+//resolve(parent, args) (how we get the data from where its store )

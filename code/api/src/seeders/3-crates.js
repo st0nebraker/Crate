@@ -46,3 +46,6 @@ module.exports = {
     return queryInterface.bulkDelete('crates', null, {});
   }
 }
+
+//inclusitivity naming?
+//images use a variety of body sizes for men and women

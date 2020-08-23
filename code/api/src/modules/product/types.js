@@ -1,6 +1,6 @@
 // Imports
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
-
+// Defining graphql object type used in models mutation and all other product files
 // Product type
 const ProductType = new GraphQLObjectType({
   name: 'product',

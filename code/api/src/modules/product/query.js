@@ -5,6 +5,7 @@ import { GraphQLString, GraphQLInt, GraphQLList } from 'graphql'
 import { ProductType, ProductTypesType } from './types'
 import { getAll, getBySlug, getById, getRelated, getTypes } from './resolvers'
 
+// Calls to graphql to get product information from database to then again connect to resolvers file. 
 // Products All
 export const products = {
   type: new GraphQLList(ProductType),

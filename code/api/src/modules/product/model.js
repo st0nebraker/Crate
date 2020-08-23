@@ -2,6 +2,7 @@
 
 // Product
 module.exports = function(sequelize, DataTypes) {
+  //creates product model from data from DB and defines it.
   return sequelize.define('products', {
     name: {
       type: DataTypes.STRING

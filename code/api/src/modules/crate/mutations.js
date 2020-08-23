@@ -6,6 +6,7 @@ import CrateType from './types'
 import { create, remove, update } from './resolvers'
 
 // Crate create
+// Create similar to PUT POST DELETE in rest
 export const crateCreate = {
   type: CrateType,
   args: {

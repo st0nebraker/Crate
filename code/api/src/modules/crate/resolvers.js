@@ -2,6 +2,8 @@
 import models from '../../setup/models'
 import params from '../../config/params'
 
+// Error messages if mutations or queries dont execute correctly.
+// Executing queries and mutation like controllers  'if else' statements in rails.
 // Get crate by ID
 export async function getById(parentValue, { crateId }) {
   const crate = await models.Crate.findOne({ where: { id: crateId } })

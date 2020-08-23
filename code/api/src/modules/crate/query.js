@@ -6,6 +6,7 @@ import CrateType from './types'
 import { getAll, getById } from './resolvers'
 
 // Crates All
+//Calls all crates from the Database
 export const crates = {
   type: new GraphQLList(CrateType),
   args: {
@@ -15,6 +16,7 @@ export const crates = {
 }
 
 // Crate By ID
+//Gets single crate by id
 export const crateById = {
   type: CrateType,
   args: {

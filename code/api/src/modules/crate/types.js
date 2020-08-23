@@ -2,6 +2,7 @@
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 
 // Crate type
+// Defines crate graphql object.  
 const CrateType = new GraphQLObjectType({
   name: 'crate',
   description: 'Crate Type',

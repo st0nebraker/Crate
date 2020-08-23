@@ -1,5 +1,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
+    //Subscription creating relationship between user and create.
     return queryInterface.createTable('subscriptions', {
       id: {
         allowNull: false,

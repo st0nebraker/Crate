@@ -1,4 +1,5 @@
 module.exports = {
+  //Creating the actual create the would be 'sent out' 
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('crates', {
       id: {

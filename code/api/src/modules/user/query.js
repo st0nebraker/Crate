@@ -48,3 +48,5 @@ export const userGenders = {
   type: new GraphQLList(UserGenderType),
   resolve: getGenders
 }
+//not really sure but if this app was inclusive, do we even need genders?
+//query/mutations interact with FE

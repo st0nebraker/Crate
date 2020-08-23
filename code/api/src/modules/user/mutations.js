@@ -38,7 +38,8 @@ export const userRemove = {
       type: GraphQLInt
     }
   },
-  resolve: remove // Call resolver for remove
+  resolve: remove
 }
 
 // Looks like we would need to add mutation for user update
+//this could include the style result in mutation to allow the user to retake the test if needed and then update the result with the new one

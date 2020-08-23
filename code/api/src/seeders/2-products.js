@@ -96,3 +96,6 @@ module.exports = {
     return queryInterface.bulkDelete('products', null, {});
   }
 }
+
+
+//same with this, add a style keyword

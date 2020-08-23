@@ -32,3 +32,7 @@ module.exports = {
     return queryInterface.bulkDelete('users', null, {});
   }
 }
+
+
+//will need to do a 'model' test for the attributes of a user
+//add style preference

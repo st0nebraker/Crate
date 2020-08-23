@@ -12,6 +12,7 @@ const UserType = new GraphQLObjectType({
     email: { type: GraphQLString },
     password: { type: GraphQLString },
     role: { type: GraphQLString },
+    //add a field styleResults
     createdAt: { type: GraphQLString },
     updatedAt: { type: GraphQLString }
   })
@@ -41,3 +42,5 @@ const UserGenderType = new GraphQLObjectType({
 })
 
 export { UserType, UserLoginType, UserGenderType }
+
+//this file contains the objects

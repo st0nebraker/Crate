@@ -40,3 +40,6 @@ module.exports = {
     return queryInterface.dropTable('users');
   }
 }
+
+//migrations directory does not have timestamps
+//wonder if we have to directly go in and change the file and then run the npm db:migrate

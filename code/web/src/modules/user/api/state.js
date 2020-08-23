@@ -10,7 +10,8 @@ export const userInitialState = {
   details: null
 }
 
-// State
+// State (won't interact with API) visuals
+// What's fetched from the BE goes in the state such as email
 export default (state = userInitialState, action) => {
   switch (action.type) {
     case SET_USER:

@@ -27,7 +27,9 @@ export function getList(isLoading = true, forceRefresh = false) {
       error: null,
       isLoading
     })
-
+    //FE likes to use 'Post' but it means 'Get'
+    //this looks to be how the FE ends request to the BE
+    //thought they would be able to enter ProductType instead of entering all the individual properties but I guess it truly is two separate apps operating under one directory
     return axios.post(routeApi, query({
       operation: 'products',
       fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt', 'updatedAt']

@@ -1,3 +1,8 @@
+//This file will be the file that BE has to worry about (actions.js)
+//Module Survey
+//import photos?
+//api action will live in user resolver/mutation for assigning style to a user in an update method
+
 // Imports
 import axios from 'axios'
 import { query, mutation } from 'gql-query-builder'
@@ -32,6 +37,8 @@ export function login(userCredentials, isLoading = true) {
       type: LOGIN_REQUEST,
       isLoading
     })
+    //post and get similar
+    //this is where the FE interacts with the BE
 
     return axios.post(routeApi, query({
       operation: 'userLogin',

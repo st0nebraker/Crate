@@ -1,5 +1,6 @@
 // Imports
-import { compose, combineReducers } from 'redux'
+import { combineReducers } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 
@@ -9,6 +10,7 @@ import user from '../modules/user/api/state'
 import * as product from '../modules/product/api/state'
 import * as subscription from '../modules/subscription/api/state'
 import * as crate from '../modules/crate/api/state'
+//Joe: Add style survey reducer in here.
 
 // App Reducer
 const appReducer = combineReducers({
@@ -40,7 +42,7 @@ export const store = createStore(
   rootReducer,
   initialState,
 
-  compose(
+  composeWithDevTools (
     applyMiddleware(thunk),
   )
 )

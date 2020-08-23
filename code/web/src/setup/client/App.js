@@ -8,6 +8,8 @@ import Layout from '../../modules/common/Layout'
 import NotFound from '../../modules/common/NotFound'
 import RoutePrivate from '../../modules/auth/RoutePrivate'
 
+
+//Joe: Connect the Style Survey Route here?
 const App = () => (
   <Layout>
     <Switch>

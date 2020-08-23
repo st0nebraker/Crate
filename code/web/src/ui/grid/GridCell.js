@@ -16,7 +16,7 @@ const GridCell = (props) => {
   } = props
 
   return (
-    <div {...others}>
+    <div {...others} className="gridCell " >
       {children}
 
       {/* language=CSS */}

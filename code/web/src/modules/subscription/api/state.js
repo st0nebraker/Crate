@@ -16,6 +16,8 @@ import {
 // Subscriptions list
 
 // Initial State
+//we'll be making a file like this & action.js for the new Survey directory
+//default state for this piece of store, given on line 27
 const subscriptionsInitialState = {
   isLoading: false,
   error: null,
@@ -24,6 +26,7 @@ const subscriptionsInitialState = {
 
 // State
 export const subscriptions = (state = subscriptionsInitialState, action) => {
+	//this block will update the store, and return the new store value based on what action is asking/doing
   switch (action.type) {
     case SUBSCRIPTIONS_GET_LIST_REQUEST:
       return {
@@ -45,12 +48,23 @@ export const subscriptions = (state = subscriptionsInitialState, action) => {
         ...state,
         isLoading: false,
         error: action.error
-      }
+      }//all 3 cases return same obj & properties w/ diff values
 
-    default:
-      return state
+		default:
+			return state
+			//default option necessary in case no case is hit
   }
 }
+
+//Our new state will be style-preference = (state = null, action)
+//W/in the switch block... depends on BE. Will style preference be a string?
+//Like.. 'Casual-Street'
+
+//Another piece of state will retrieve the survey questions
+
+//Add in reducer to retrieve whole survey options
+//Wait to see how it look, object of arrays?
+//Return that
 
 // Subscriptions list by user
 

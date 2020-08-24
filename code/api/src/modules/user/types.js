@@ -5,7 +5,6 @@ import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 const UserType = new GraphQLObjectType({
   name: 'user',
   description: 'User type',
-
   fields: () => ({
     id: { type: GraphQLInt },
     name: { type: GraphQLString },
@@ -28,7 +27,6 @@ const UserLoginType = new GraphQLObjectType({
   })
 })
 
-// User Gender type
 const UserGenderType = new GraphQLObjectType({
   name: 'userGender',
   description: 'User Gender Type',

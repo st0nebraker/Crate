@@ -21,3 +21,5 @@ setupGraphQL(server)
 
 // Start server
 setupStartServer(server)
+
+//test setup: express server, send server through several functions, setup graphql

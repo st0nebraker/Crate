@@ -27,4 +27,8 @@ connection
     console.error('ERROR - Unable to connect to the database:', err)
   })
 
+<<<<<<< HEAD
 export default connection
+=======
+export default connection
+>>>>>>> remove comments

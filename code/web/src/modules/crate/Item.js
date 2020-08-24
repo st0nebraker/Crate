@@ -14,6 +14,7 @@ import { white, grey2, black } from '../../ui/common/colors'
 // App Imports
 import { APP_URL } from '../../setup/config/env'
 import userRoutes from '../../setup/routes/user'
+import surveyRoutes from '../../setup/routes/survey'
 import { messageShow, messageHide } from '../common/api/actions'
 import { create } from '../subscription/api/actions'
 
@@ -28,43 +29,48 @@ class Item extends PureComponent {
     }
   }
 
-  onClickSubscribe = (crateId) => {
-    this.setState({
-      isLoading: true
-    })
-
-    this.props.messageShow('Subscribing, please wait...')
-
-    this.props.create({ crateId })
-      .then(response => {
-        if (response.data.errors && response.data.errors.length > 0) {
-          this.props.messageShow(response.data.errors[0].message)
-        } else {
-          this.props.messageShow('Subscribed successfully.')
-
-          this.props.history.push(userRoutes.subscriptions.path)
-        }
-      })
-      .catch(error => {
-        this.props.messageShow('There was some error subscribing to this crate. Please try again.')
-      })
-      .then(() => {
-        this.setState({
-          isLoading: false
-        })
-
-        window.setTimeout(() => {
-          this.props.messageHide()
-        }, 5000)
-      })
+	onClickSubscribe = (crateId) => {		
+		this.setState({
+			isLoading: true
+		})
+		
+		if (!this.props.stylePref.style) {
+			this.props.messageShow('Loading Style Survey...')
+			this.props.history.push(surveyRoutes.survey.path)
+			
+		} else {
+			this.props.messageShow('Subscribing, please wait...')
+			this.props.create({ crateId })
+			.then(response => {
+				if (response.data.errors && response.data.errors.length > 0) {
+					this.props.messageShow(response.data.errors[0].message)
+				} else {
+					this.props.messageShow('Subscribed successfully.')
+					
+					this.props.history.push(userRoutes.subscriptions.path)
+				}
+			})
+				.catch(error => {
+					this.props.messageShow('There was some error subscribing to this crate. Please try again.')
+				})
+				.then(() => {
+					this.setState({
+						isLoading: false
+					})
+					
+					window.setTimeout(() => {
+						this.props.messageHide()
+					}, 5000)
+				})
+		}
   }
 
   render() {
-    const { id, name, description } = this.props.crate
+		const { id, name, description } = this.props.crate
     const { isLoading } = this.state
 
     return (
-      <Card style={{ width: '18em', backgroundColor: white }}>
+			<Card style={{ width: '18em', backgroundColor: white }}>
         <p style={{ padding: '2em 3em 0 3em' }}>
           <img src={`${ APP_URL }/images/crate.png`} alt={name} style={{ width: '100%' }}/>
         </p>
@@ -101,7 +107,8 @@ Item.propTypes = {
 // Component State
 function itemState(state) {
   return {
-    user: state.user
+		user: state.user,
+		stylePref: state.stylePreference
   }
 }
 

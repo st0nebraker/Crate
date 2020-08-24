@@ -68,7 +68,7 @@ class Signup extends Component {
         } else {
           this.props.messageShow('Signed up successfully.')
 
-          this.props.history.push(userRoutes.login.path)
+          this.props.history.push(userRoutes.login.path) //Redirects to login path
         }
       })
       .catch(error => {

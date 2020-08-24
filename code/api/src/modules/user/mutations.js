@@ -36,5 +36,5 @@ export const userRemove = {
       type: GraphQLInt
     }
   },
-  resolve: remove
+  resolve: remove // Call resolver for remove
 }

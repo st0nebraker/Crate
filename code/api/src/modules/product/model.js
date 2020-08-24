@@ -1,6 +1,5 @@
 'use strict'
 
-// Product
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('products', {
     name: {
@@ -20,6 +19,12 @@ module.exports = function(sequelize, DataTypes) {
     },
     image: {
       type: DataTypes.TEXT
+    },
+    style: {
+      type: DataTypes.STRING
+    },
+    isSurvey: {
+      type: DataTypes.BOOLEAN
     }
   })
 }

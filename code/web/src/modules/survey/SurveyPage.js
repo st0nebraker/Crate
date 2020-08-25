@@ -14,18 +14,24 @@ import { withRouter } from 'react-router-dom'
 // App Imports
 import { APP_URL } from '../../setup/config/env'
 import { messageShow, messageHide } from '../common/api/actions'
-import { remove, getListByUser } from '../subscription/api/actions'
+import { getSurveyProducts, parseSurveyItems } from './api/actions'
 
 // Component
 class SurveyPage extends PureComponent {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isLoading: false
+    }
+	}
+	
+  static fetchData({ store }) {
+    return store.dispatch(getSurveyProducts())
+  }
 
-  // constructor(props) {
-  //   super(props)
-
-  //   this.state = {
-  //     isLoading: false
-  //   }
-  // }
+	componentDidMount() {
+		this.props.getSurveyProducts();
+	}
 
   render() {
     // const { id, crate, createdAt } = this.props.subscription
@@ -53,10 +59,11 @@ SurveyPage.propTypes = {
 }
 
 // Component State
-function itemState(state) {
+function surveyState(state) {
   return {
-    user: state.user
+		user: state.user,
+		surveyProducts: state.surveyProducts
   }
 }
 
-export default SurveyPage
+export default connect(surveyState, { getSurveyProducts, parseSurveyItems })(SurveyPage)

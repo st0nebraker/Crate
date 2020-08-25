@@ -20,9 +20,9 @@ export function getStylePref(isLoading = true, forceRefresh = false) {
     })
 
     // return axios.post(routeApi, query({
-		//   operation: 'styleUpdate',
-		//	variables: { style }
-    //   fields: ['style']
+		//   operation: 'styleUpdate', //fn name in query/mutation files
+		//	variables: { style } //the args in that fn
+    //   fields: ['style'] //fields in type file
     // }))
     //   .then(response => {
     //     if (response.status === 200) {
@@ -30,7 +30,7 @@ export function getStylePref(isLoading = true, forceRefresh = false) {
     //         type: ADD_STYLE_PREF,
     //         style
     //         isLoading: false,
-    //       })
+    //       }) // is the response coming from the resolvers file?
     //     } else {
     //       dispatch({
     //         type: PRODUCTS_GET_LIST_FAILURE,

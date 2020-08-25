@@ -26,6 +26,20 @@ export async function create(parentValue, { name, email, password }) {
   }
 }
 
+// Update product
+export async function update(parentValue, { id, styleResult}, { auth }) {
+  // if (auth.user && auth.user.role === params.user.roles.admin) {
+    return await models.User.update(
+      {
+        styleResult
+      },
+      { where: { id } }
+    )
+  // } else {
+  //   throw new Error('Operation denied.')
+  // }
+}
+
 export async function login(parentValue, { email, password }) {
   const user = await models.User.findOne({ where: { email } })
 

@@ -3,6 +3,14 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import { Grid, GridCell } from '../../ui/grid'
+import Card from '../../ui/card/Card'
+import { white, grey2, black } from '../../ui/common/colors'
+import Button from '../../ui/button/Button'
+
+
+
+
 
 // UI Imports
 // import Card from '../../ui/card/Card'
@@ -36,7 +44,33 @@ class SurveyPage extends PureComponent {
       // <Card style={{ width: '18em', backgroundColor: white }}>
 			// </Card>
 			<div>
-				TEST
+        TEST
+        <Card style={{ marginTop: '2em', width: '12em', backgroundColor: white }}>
+        <p style={{ width: '45%', display: 'inline'}}>
+            <image style={{ width: '100%', border: "1px solid black" }}>
+            image1
+          </image> 
+          {/* <img src={`${ APP_URL }/images/crate.png`} alt={ crate.name } style={{ width: '100%' }}/> */}
+        </p>  
+          <p style={{ margin: '20%, 0, 2%, 0', width: '45%', display: 'inline' }}>
+            <image style={{ width: '100%', border: "1px solid black"}}>
+            image2
+          </image> 
+          {/* <img src={`${ APP_URL }/images/crate.png`} alt={ crate.name } style={{ width: '100%' }}/> */}
+        </p>
+
+        <div style={{ padding: '1em 1.2em' }}>
+          {/* <H4 font="secondary" style={{ color: black }}>{ crate.name }</H4> */}
+          <p style={{}}>
+            <input
+              type="radio"
+              // disabled={ isLoading }
+            >
+              {/* <Icon size={1.2} style={{ color: white }}>remove_circle_outline</Icon> Unsubscribe */}
+            </input>
+          </p>
+        </div>
+      </Card>
 			</div>
     )
   }

@@ -1,5 +1,5 @@
 // Imports
-import { GraphQLString, GraphQLInt, GraphQLList } from 'graphql'
+import { GraphQLString, GraphQLInt, GraphQLList, GraphQLBoolean } from 'graphql'
 
 // App Imports
 import { ProductType, ProductTypesType } from './types'

@@ -77,7 +77,6 @@ export const parseSurveyProducts = (state = [], action) => {
 	switch (action.type) {
 		case PARSE_SURVEY_ITEMS:
 			const filteredProducts = action.list.filter(item => item.isSurvey);
-			console.log('HERE', filteredProducts)
 			return {
 				...state,
 				isLoading: action.isLoading,

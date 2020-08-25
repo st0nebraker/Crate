@@ -21,7 +21,8 @@ class SurveyPage extends PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      isLoading: false
+			isLoading: false,
+			parsedItems: []
     }
 	}
 	
@@ -31,6 +32,13 @@ class SurveyPage extends PureComponent {
 
 	componentDidMount() {
 		this.props.getSurveyProducts();
+	}
+	
+	componentDidUpdate() {
+		if (this.state.parsedItems.length === 0) {
+			const filteredItems = this.props.surveyProducts.products.filter(item => item.isSurvey)
+			this.setState({parsedItems: filteredItems})
+		}
 	}
 
   render() {

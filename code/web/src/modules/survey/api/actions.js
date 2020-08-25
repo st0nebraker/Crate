@@ -58,28 +58,14 @@ export function getSurveyProducts(isLoading = true, forceRefresh = false) {
 			fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt', 'updatedAt', 'style', 'isSurvey']
 		}))
 			.then(response => {
-				if (response.status === 200) {
 					dispatch({
 						type: GET_SURVEY_PRODUCTS,
 						isLoading,
 						error: null,
 						list: response.data.data.products
 					})
-				} else {
-					dispatch({
-            type: SURVEY_GET_LIST_FAILURE,
-            error: 'Some error occurred. Please try again.',
-            isLoading: false
-          })
-        }
+				return response
 			})
-			.then(response => {
-				dispatch({
-				type: PARSE_SURVEY_ITEMS,
-				isLoading: action.isLoading,
-				error: null,
-				list: response.data.data.products
-			})})
       .catch(error => {
           dispatch({
             type: SURVEY_GET_LIST_FAILURE,

@@ -6,6 +6,7 @@ import jwt from 'jsonwebtoken'
 import serverConfig from '../../config/server'
 import params from '../../config/params'
 import models from '../../setup/models'
+import { where } from 'sequelize'
 
 // Create
 export async function create(parentValue, { name, email, password }) {
@@ -26,18 +27,14 @@ export async function create(parentValue, { name, email, password }) {
   }
 }
 
-// Update product
-export async function update(parentValue, { id, styleResult}, { auth }) {
-  // if (auth.user && auth.user.role === params.user.roles.admin) {
-    return await models.User.update(
-      {
-        styleResult
-      },
-      { where: { id } }
-    )
-  // } else {
-  //   throw new Error('Operation denied.')
-  // }
+// Update User
+export async function update(parentValue, { id, styleResult}) {
+  const user = await models.User.findOne({where: id })
+  return await user.update(
+    {
+      styleResult
+    }
+  )
 }
 
 export async function login(parentValue, { email, password }) {

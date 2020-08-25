@@ -72,19 +72,3 @@ export const surveyProducts = (state = productsInitialState, action) => {
 			return state
 	}
 }
-
-export const parseSurveyProducts = (state = [], action) => {
-	switch (action.type) {
-		case PARSE_SURVEY_ITEMS:
-			const filteredProducts = action.list.filter(item => item.isSurvey);
-			return {
-				...state,
-				isLoading: action.isLoading,
-				error: null,
-				products: filteredProducts
-			}
-		
-		default:
-			return state
-	}
-}

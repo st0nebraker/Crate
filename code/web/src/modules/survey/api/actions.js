@@ -9,7 +9,6 @@ import { routeApi } from '../../../setup/routes'
 export const GET_STYLE_PREF = 'GET_STYLE_PREF'
 export const GET_SURVEY_PRODUCTS = 'GET_SURVEY_PRODUCTS'
 export const SURVEY_GET_LIST_FAILURE = 'SURVEY_GET_LIST_FAILURE'
-export const PARSE_SURVEY_ITEMS = 'PARSE_SURVEY_ITEMS'
 
 // Actions
 
@@ -73,14 +72,5 @@ export function getSurveyProducts(isLoading = true, forceRefresh = false) {
             isLoading: false
           })
 			})
-	}
-}
-
-export function parseSurveyItems(products) {
-	return dispatch => {
-		dispatch({
-			type: PARSE_SURVEY_ITEMS,
-			list: products
-		})
 	}
 }

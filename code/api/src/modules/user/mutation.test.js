@@ -24,7 +24,8 @@ describe('user mutations', () => {
     const user =  await models.User.create({
       name: "User",
       email: "user@email.com",
-      password: 12345
+      password: 12345,
+      styleResult: null
     })
     const response = await request(server)
       .post('/')

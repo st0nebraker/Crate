@@ -31,6 +31,18 @@ export async function getById(parentValue, { productId }) {
   }
 }
 
+// Get product if 'isSurvey: true' 
+export async function getProductOnSurvey(parentValue, { productSurvey }) {
+  const product = await models.Product.findAll({ where: { isSurvey: productSurvey } })
+
+  if (!product) {
+    // Product is not on survey
+    throw new Error('This product is not on the survey.')
+  } else {
+    return product
+  }
+}
+
 // Get related products
 export async function getRelated(parentValue, { productId }) {
   return await models.Product.findAll({

@@ -25,6 +25,9 @@ module.exports = function(sequelize, DataTypes) {
     },
     isSurvey: {
       type: DataTypes.BOOLEAN
+    },
+    category: {
+      type: DataTypes.STRING
     }
   })
 }

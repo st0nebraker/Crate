@@ -1,9 +1,9 @@
 // Imports
-import { GraphQLString, GraphQLInt, GraphQLList } from 'graphql'
+import { GraphQLString, GraphQLInt, GraphQLList, GraphQLBoolean } from 'graphql'
 
 // App Imports
 import { ProductType, ProductTypesType } from './types'
-import { getAll, getBySlug, getById, getRelated, getTypes } from './resolvers'
+import { getAll, getBySlug, getById, getRelated, getTypes, getProductOnSurvey } from './resolvers'
 
 // Products All
 export const products = {
@@ -42,4 +42,13 @@ export const productsRelated = {
 export const productTypes = {
   type: new GraphQLList(ProductTypesType),
   resolve: getTypes
+}
+
+// Product by isSurvey: true
+export const productSurveyTrue = {
+  type: new GraphQLList(ProductType),
+  args: {
+    productSurvey: { type: GraphQLBoolean }
+  },
+  resolve: getProductOnSurvey
 }

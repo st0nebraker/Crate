@@ -7,7 +7,6 @@ import {
 import { products } from '../../product/api/state'
 
 const styleInitialState = {
-  isLoading: false,
 	error: null,
 	style: null
 }
@@ -23,7 +22,6 @@ export const stylePreference = (state = styleInitialState, action) => {
 		case GET_STYLE_PREF:
 			return {
 				...state,
-				isLoading: action.isLoading,
 				error: null
 			}
 

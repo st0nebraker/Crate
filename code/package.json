@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "concurrently": "^4.1.0",
-    "jest": "^26.4.1"
+    "jest": "^26.4.1",
+    "sequelize-cli": "^6.2.0"
   }
 }

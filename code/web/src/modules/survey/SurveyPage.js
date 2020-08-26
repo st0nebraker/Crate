@@ -60,22 +60,25 @@ class SurveyPage extends PureComponent {
 
 			  {/* Make 3 sections, map over each one to make the card */}
 				<Grid>
-					<H4 font="secondary">Tops</H4>
-				{this.state.parsedItems.map((item, i) => {
-					return (
-						<GridCell>
-						<Card style={{ marginTop: '2em', width: '12em', backgroundColor: white }} key={i}>
-							<img src={routeImage + item.image} alt={item.name} style={{ width: '100%' }}/>
-							<p>
+					<H4 font="secondary" style={{ marginLeft: '1em' }}>Tops</H4>
+				</Grid>
+				<Grid style={{ marginLeft: '1em' }}>
+					{this.state.parsedItems.map((item, i) => {
+						return (
+							<GridCell>
+							<Card style={{ marginTop: '2em', width: '12em', backgroundColor: white }} key={i}>
+								<img src={routeImage + item.image} alt={item.name} style={{ width: '100%' }}/>
 								<input type="radio" />
-							</p>
-						</Card>
-						</GridCell>
-						)
-					})
-				}
-				  <Button theme="secondary" style={{ marginLeft: '1em' }}>Submit</Button>
-        </Grid>
+							</Card>
+							</GridCell>
+							)
+						})
+					}
+				</Grid>
+				
+				<Grid>
+				  <Button theme="secondary" style={{ marginLeft: '50%', marginTop: '2em', marginBottom: '2em' }}>Submit</Button>
+				</Grid>
 			</div>
 		)
 	}

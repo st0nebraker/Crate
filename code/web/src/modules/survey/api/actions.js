@@ -12,11 +12,10 @@ export const SURVEY_GET_LIST_FAILURE = 'SURVEY_GET_LIST_FAILURE'
 
 // Actions
 
-export function getStylePref(isLoading = true, forceRefresh = false) {
+export function getStylePref(forceRefresh = false) {
   return dispatch => {
     dispatch({
       type: GET_STYLE_PREF,
-      isLoading,
       error: null
     })
 
@@ -54,12 +53,12 @@ export function getSurveyProducts(isLoading = true, forceRefresh = false) {
 	return dispatch => {
 		return axios.post(routeApi, query({
 			operation: 'products',
-			fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt', 'updatedAt', 'style', 'isSurvey', 'category']
+			fields: ['name', 'description', 'image', 'style', 'isSurvey', 'category']
 		}))
 			.then(response => {
 					dispatch({
 						type: GET_SURVEY_PRODUCTS,
-						isLoading,
+						isLoading: false,
 						error: null,
 						list: response.data.data.products
 					})

@@ -115,8 +115,8 @@ class SurveyPage extends PureComponent {
 						<GridCell>
 							<Card style={{ marginTop: '2em', width: '19em', backgroundColor: white, marginLeft: '9px' }} key='rocker-bottom'>
 								<div style={{ display: 'flex' }}>
-									<img src={routeImage + this.state.parsedItems.rocker[3].image} alt={this.state.parsedItems.rocker[3].name} style={{ width: '50%' }}/>
-									<img src={routeImage + this.state.parsedItems.rocker[4].image} alt={this.state.parsedItems.rocker[4].name} style={{ width: '50%' }}/>
+									<img src={routeImage + this.state.parsedItems.rocker[5].image} alt={this.state.parsedItems.rocker[5].name} style={{ width: '50%' }}/>
+									<img src={routeImage + this.state.parsedItems.rocker[6].image} alt={this.state.parsedItems.rocker[6].name} style={{ width: '50%' }}/>
 								</div>
 								<input type="radio" style={{ marginLeft: '50%' }} />
 							</Card>
@@ -124,8 +124,8 @@ class SurveyPage extends PureComponent {
 						<GridCell>
 							<Card style={{ marginTop: '2em', width: '19em', backgroundColor: white, marginLeft: '9px' }} key='bohemian-bottom'>
 								<div style={{ display: 'flex' }}>
-									<img src={routeImage + this.state.parsedItems.bohemian[3].image} alt={this.state.parsedItems.bohemian[3].name} style={{ width: '50%' }}/>
-									<img src={routeImage + this.state.parsedItems.bohemian[4].image} alt={this.state.parsedItems.bohemian[4].name} style={{ width: '50%' }}/>
+									<img src={routeImage + this.state.parsedItems.bohemian[5].image} alt={this.state.parsedItems.bohemian[5].name} style={{ width: '50%' }}/>
+									<img src={routeImage + this.state.parsedItems.bohemian[6].image} alt={this.state.parsedItems.bohemian[6].name} style={{ width: '50%' }}/>
 								</div>
 								<input type="radio" style={{ marginLeft: '50%' }} />
 							</Card>
@@ -133,8 +133,8 @@ class SurveyPage extends PureComponent {
 						<GridCell>
 							<Card style={{ marginTop: '2em', width: '19em', backgroundColor: white, marginLeft: '9px' }} key='business-bottom'>
 								<div style={{ display: 'flex' }}>
-									<img src={routeImage + this.state.parsedItems.business[3].image} alt={this.state.parsedItems.business[3].name} style={{ width: '50%' }}/>
-									<img src={routeImage + this.state.parsedItems.business[4].image} alt={this.state.parsedItems.business[4].name} style={{ width: '50%' }}/>
+									<img src={routeImage + this.state.parsedItems.business[5].image} alt={this.state.parsedItems.business[5].name} style={{ width: '50%' }}/>
+									<img src={routeImage + this.state.parsedItems.business[6].image} alt={this.state.parsedItems.business[6].name} style={{ width: '50%' }}/>
 								</div>
 								<input type="radio" style={{ marginLeft: '50%' }} />
 							</Card>
@@ -142,8 +142,8 @@ class SurveyPage extends PureComponent {
 						<GridCell>
 							<Card style={{ marginTop: '2em', width: '19em', backgroundColor: white, marginLeft: '9px' }} key='artsy-bottom'>
 								<div style={{ display: 'flex' }}>
-									<img src={routeImage + this.state.parsedItems.artsy[3].image} alt={this.state.parsedItems.artsy[3].name} style={{ width: '50%' }}/>
-									<img src={routeImage + this.state.parsedItems.artsy[4].image} alt={this.state.parsedItems.artsy[4].name} style={{ width: '50%' }}/>
+									<img src={routeImage + this.state.parsedItems.artsy[5].image} alt={this.state.parsedItems.artsy[5].name} style={{ width: '50%' }}/>
+									<img src={routeImage + this.state.parsedItems.artsy[6].image} alt={this.state.parsedItems.artsy[6].name} style={{ width: '50%' }}/>
 								</div>
 								<input type="radio" style={{ marginLeft: '50%' }} />
 							</Card>
@@ -158,8 +158,8 @@ class SurveyPage extends PureComponent {
 						<GridCell>
 							<Card style={{ marginTop: '2em', width: '19em', backgroundColor: white, marginLeft: '9px' }} key='rocker-shoes'>
 								<div style={{ display: 'flex' }}>
-									<img src={routeImage + this.state.parsedItems.rocker[5].image} alt={this.state.parsedItems.rocker[5].name} style={{ width: '50%' }}/>
-									<img src={routeImage + this.state.parsedItems.rocker[6].image} alt={this.state.parsedItems.rocker[6].name} style={{ width: '50%' }}/>
+									<img src={routeImage + this.state.parsedItems.rocker[3].image} alt={this.state.parsedItems.rocker[3].name} style={{ width: '50%' }}/>
+									<img src={routeImage + this.state.parsedItems.rocker[4].image} alt={this.state.parsedItems.rocker[4].name} style={{ width: '50%' }}/>
 								</div>
 								<input type="radio" style={{ marginLeft: '50%' }} />
 							</Card>
@@ -167,8 +167,8 @@ class SurveyPage extends PureComponent {
 						<GridCell>
 							<Card style={{ marginTop: '2em', width: '19em', backgroundColor: white, marginLeft: '9px' }} key='bohemian-shoes'>
 								<div style={{ display: 'flex' }}>
-									<img src={routeImage + this.state.parsedItems.bohemian[5].image} alt={this.state.parsedItems.bohemian[5].name} style={{ width: '50%' }}/>
-									<img src={routeImage + this.state.parsedItems.bohemian[6].image} alt={this.state.parsedItems.bohemian[6].name} style={{ width: '50%' }}/>
+									<img src={routeImage + this.state.parsedItems.bohemian[3].image} alt={this.state.parsedItems.bohemian[3].name} style={{ width: '50%' }}/>
+									<img src={routeImage + this.state.parsedItems.bohemian[4].image} alt={this.state.parsedItems.bohemian[4].name} style={{ width: '50%' }}/>
 								</div>
 								<input type="radio" style={{ marginLeft: '50%' }} />
 							</Card>
@@ -176,8 +176,8 @@ class SurveyPage extends PureComponent {
 						<GridCell>
 							<Card style={{ marginTop: '2em', width: '19em', backgroundColor: white, marginLeft: '9px' }} key='business-shoes'>
 								<div style={{ display: 'flex' }}>
-									<img src={routeImage + this.state.parsedItems.business[5].image} alt={this.state.parsedItems.business[5].name} style={{ width: '50%' }}/>
-									<img src={routeImage + this.state.parsedItems.business[6].image} alt={this.state.parsedItems.business[6].name} style={{ width: '50%' }}/>
+									<img src={routeImage + this.state.parsedItems.business[3].image} alt={this.state.parsedItems.business[3].name} style={{ width: '50%' }}/>
+									<img src={routeImage + this.state.parsedItems.business[4].image} alt={this.state.parsedItems.business[4].name} style={{ width: '50%' }}/>
 								</div>
 								<input type="radio" style={{ marginLeft: '50%' }} />
 							</Card>
@@ -185,8 +185,8 @@ class SurveyPage extends PureComponent {
 						<GridCell>
 							<Card style={{ marginTop: '2em', width: '19em', backgroundColor: white, marginLeft: '9px' }} key='artsy-shoes'>
 								<div style={{ display: 'flex' }}>
-									<img src={routeImage + this.state.parsedItems.artsy[5].image} alt={this.state.parsedItems.artsy[5].name} style={{ width: '50%' }}/>
-									<img src={routeImage + this.state.parsedItems.artsy[6].image} alt={this.state.parsedItems.artsy[6].name} style={{ width: '50%' }}/>
+									<img src={routeImage + this.state.parsedItems.artsy[3].image} alt={this.state.parsedItems.artsy[3].name} style={{ width: '50%' }}/>
+									<img src={routeImage + this.state.parsedItems.artsy[4].image} alt={this.state.parsedItems.artsy[4].name} style={{ width: '50%' }}/>
 								</div>
 								<input type="radio" style={{ marginLeft: '50%' }} />
 							</Card>

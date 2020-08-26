@@ -23,14 +23,6 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date()
       }
-      // {
-      //   name: 'stylish_user',
-      //   email: 'stylish_user@crate.com',
-      //   password: bcrypt.hashSync('123456', config.saltRounds),
-      //   role: params.user.roles.user,
-      //   createdAt: new Date(),
-      //   updatedAt: new Date()
-      // }
     ])
   },
 

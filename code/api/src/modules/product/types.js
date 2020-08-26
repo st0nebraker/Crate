@@ -16,6 +16,7 @@ const ProductType = new GraphQLObjectType({
     image: { type: GraphQLString },
     style: { type: GraphQLString},
     isSurvey: { type: GraphQLBoolean},
+    category: { type: GraphQLString},
     createdAt: { type: GraphQLString },
     updatedAt: { type: GraphQLString }
   })

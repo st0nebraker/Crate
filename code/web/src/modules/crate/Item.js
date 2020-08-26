@@ -35,7 +35,7 @@ class Item extends PureComponent {
 		})
 		
 		if (!this.props.stylePref.style) {
-			this.props.messageShow('Loading Style Survey...')
+			// this.props.messageShow('Loading Style Survey...')
 			this.props.history.push(surveyRoutes.survey.path)
 			
 		} else {

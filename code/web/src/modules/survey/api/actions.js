@@ -7,31 +7,30 @@ import { routeApi } from '../../../setup/routes'
 
 // Actions Types
 export const GET_STYLE_PREF = 'GET_STYLE_PREF'
-// export const PRODUCTS_GET_LIST_RESPONSE = 'PRODUCTS/GET_LIST_RESPONSE'
+export const GET_SURVEY_PRODUCTS = 'GET_SURVEY_PRODUCTS'
+export const SURVEY_GET_LIST_FAILURE = 'SURVEY_GET_LIST_FAILURE'
 
 // Actions
 
-// Get list of products
-export function getStylePref(isLoading = true, forceRefresh = false) {
+export function getStylePref(forceRefresh = false) {
   return dispatch => {
     dispatch({
       type: GET_STYLE_PREF,
-      isLoading,
       error: null
     })
 
     // return axios.post(routeApi, query({
-    //   operation: 'products',
-    //   fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt', 'updatedAt']
+		//   operation: 'styleUpdate', //fn name in query/mutation files
+		//	variables: { style } //the args in that fn
+    //   fields: ['style'] //fields in type file
     // }))
     //   .then(response => {
     //     if (response.status === 200) {
     //       dispatch({
-    //         type: PRODUCTS_GET_LIST_RESPONSE,
-    //         error: null,
+    //         type: ADD_STYLE_PREF,
+    //         style
     //         isLoading: false,
-    //         list: response.data.data.products
-    //       })
+    //       }) // is the response coming from the resolvers file?
     //     } else {
     //       dispatch({
     //         type: PRODUCTS_GET_LIST_FAILURE,
@@ -41,11 +40,36 @@ export function getStylePref(isLoading = true, forceRefresh = false) {
     //     }
     //   })
     //   .catch(error => {
-    //     dispatch({
-    //       type: PRODUCTS_GET_LIST_FAILURE,
-    //       error: 'Some error occurred. Please try again.',
-    //       isLoading: false
-    //     })
+    //       dispatch({
+    //         type: PRODUCTS_GET_LIST_FAILURE,
+    //         error: 'Some error occurred. Please try again.',
+    //         isLoading: false
+    //       })
     //   })
   }
+}
+
+export function getSurveyProducts(isLoading = true, forceRefresh = false) {
+	return dispatch => {
+		return axios.post(routeApi, query({
+			operation: 'products',
+			fields: ['name', 'description', 'image', 'style', 'isSurvey', 'category']
+		}))
+			.then(response => {
+					dispatch({
+						type: GET_SURVEY_PRODUCTS,
+						isLoading: false,
+						error: null,
+						list: response.data.data.products
+					})
+				return response
+			})
+      .catch(error => {
+          dispatch({
+            type: SURVEY_GET_LIST_FAILURE,
+            error: 'Some error occurred. Please try again.',
+            isLoading: false
+          })
+			})
+	}
 }

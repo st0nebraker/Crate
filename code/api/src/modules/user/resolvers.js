@@ -6,6 +6,7 @@ import jwt from 'jsonwebtoken'
 import serverConfig from '../../config/server'
 import params from '../../config/params'
 import models from '../../setup/models'
+import { where } from 'sequelize'
 
 // Create
 export async function create(parentValue, { name, email, password }) {
@@ -24,6 +25,16 @@ export async function create(parentValue, { name, email, password }) {
     // User exists
     throw new Error(`The email ${ email } is already registered. Please try to login.`)
   }
+}
+
+// Update User
+export async function update(parentValue, { id, styleResult}) {
+  const user = await models.User.findOne({where: id })
+  return await user.update(
+    {
+      styleResult
+    }
+  )
 }
 
 export async function login(parentValue, { email, password }) {

@@ -4,17 +4,13 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
+
+// UI Imports
 import { Grid, GridCell } from '../../ui/grid'
 import Card from '../../ui/card/Card'
 import { white, grey, grey2, black } from '../../ui/common/colors'
 import Button from '../../ui/button/Button'
 import { H3, H4 } from '../../ui/typography'
-
-// UI Imports
-// import Card from '../../ui/card/Card'
-// import Button from '../../ui/button/Button'
-// import Icon from '../../ui/icon'
-// import { white, grey2, black } from '../../ui/common/colors'
 
 // App Imports
 import { APP_URL } from '../../setup/config/env'
@@ -48,9 +44,6 @@ class SurveyPage extends PureComponent {
 	}
 
   render() {
-    // const { id, crate, createdAt } = this.props.subscription
-    // const { isLoading } = this.state
-
     return (
 			<div>
 				<Helmet>
@@ -81,6 +74,7 @@ class SurveyPage extends PureComponent {
 						)
 					})
 				}
+				  <Button theme="secondary" style={{ marginLeft: '1em' }}>Submit</Button>
         </Grid>
 			</div>
 		)

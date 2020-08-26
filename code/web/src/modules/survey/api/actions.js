@@ -54,7 +54,7 @@ export function getSurveyProducts(isLoading = true, forceRefresh = false) {
 	return dispatch => {
 		return axios.post(routeApi, query({
 			operation: 'products',
-			fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt', 'updatedAt', 'style', 'isSurvey', 'type']
+			fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt', 'updatedAt', 'style', 'isSurvey', 'category']
 		}))
 			.then(response => {
 					dispatch({

@@ -45,7 +45,7 @@ export const productTypes = {
 }
 
 // Product by isSurvey: true
-export const productWhenSurveyIsTrue = {
+export const productSurveyTrue = {
   type: new GraphQLList(ProductType),
   args: {
     productSurvey: { type: GraphQLBoolean }

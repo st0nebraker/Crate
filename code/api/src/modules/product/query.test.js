@@ -26,7 +26,7 @@ describe('product query', () => {
     const response = await request(server)
     .get('/')
     .send({
-      query: `{productWhenSurveyIsTrue(productSurvey: false){
+      query: `{productSurveyTrue(productSurvey: false){
       name
       id
       isSurvey
@@ -34,14 +34,14 @@ describe('product query', () => {
     })
     .expect(200)
     console.log(response.body)
-    expect(response.body.data.productWhenSurveyIsTrue.length).toEqual(8)
+    expect(response.body.data.productSurveyTrue.length).toEqual(8)
   })
 
   it("returns products with isSurvey: true", async () => {
     const response = await request(server)
       .get('/')
       .send({
-        query: `{productWhenSurveyIsTrue(productSurvey: true){
+        query: `{productSurveyTrue(productSurvey: true){
       name
       id
       isSurvey
@@ -49,6 +49,6 @@ describe('product query', () => {
       })
       .expect(200)
     console.log(response.body)
-    expect(response.body.data.productWhenSurveyIsTrue.length).toEqual(0)
+    expect(response.body.data.productSurveyTrue.length).toEqual(0)
   })
 })

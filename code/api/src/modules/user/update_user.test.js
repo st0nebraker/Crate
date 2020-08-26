@@ -35,8 +35,11 @@ describe('user mutations', () => {
     expect(response.body.data.userUpdate.id).toEqual(user.id)
     expect(response.body.data.userUpdate.styleResult).toEqual('Neat')
 
-    // expect(user.styleResult).toEqual('Neat')
     const testUser = await models.User.findOne({where: {id: user.id }});
     expect(testUser.styleResult).toEqual('Neat')
+    expect(testUser.name).toEqual('User')
+    expect(testUser.email).toEqual('user@email.com')
+
+    await testUser.destroy();
   })
 })

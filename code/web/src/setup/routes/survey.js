@@ -3,7 +3,7 @@ import SurveyResults from '../../modules/survey/SurveyResults'
 
 export default {
 	survey: {
-    path: '/style-survey',
+    path: '/survey',
     component: SurveyPage,
     auth: true
 	},

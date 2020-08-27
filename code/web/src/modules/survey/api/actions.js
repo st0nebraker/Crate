@@ -47,33 +47,29 @@ export function getStylePref(forceRefresh = false) {
   }
 }
 
-export function updateStylePref(forceRefresh = false) {
+export function updateStylePref(id, styleResult) {
   return dispatch => {
-    dispatch({
-      type: UPDATE_STYLE_PREF,
-      error: null
-    })
-
     return axios.post(routeApi, mutation({
-		  operation: 'user', //fn name in query/mutation files
+		  operation: 'userUpdate', //fn name in query/mutation files
 			variables: { id, styleResult }, // user id //the args in that fn
-      fields: ['id', 'styleResult'] //fields in type file
+      fields: ['styleResult'] //fields in type file
     }))
       .then(response => {
         if (response.status === 200) {
           dispatch({
-            type: UPDATE_STYLE_PREF,
-            styleResult
+						type: UPDATE_STYLE_PREF,
+						error: null,
+            styleResult: response.data.data.userUpdate.styleResult
           })
         }
       })
-      .catch(error => {
-          dispatch({
-            type: UPDATE_STYLE_PREF_FAILURE,//make reducer for
-            error: 'Some error occurred. Please try again.',
-            isLoading: false
-          })
-      })
+      // .catch(error => {
+      //     dispatch({
+      //       type: UPDATE_STYLE_PREF_FAILURE,//make reducer for
+      //       error: 'Some error occurred. Please try again.',
+      //       isLoading: false
+      //     })
+      // })
   }
 }
 
@@ -90,7 +86,6 @@ export function getSurveyProducts(isLoading = true, forceRefresh = false) {
 						error: null,
 						list: response.data.data.products
 					})
-				return response
 			})
       .catch(error => {
           dispatch({

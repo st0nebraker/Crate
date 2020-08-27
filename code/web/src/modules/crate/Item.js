@@ -41,15 +41,15 @@ class Item extends PureComponent {
 		} else {
 			this.props.messageShow('Subscribing, please wait...')
 			this.props.create({ crateId })
-			.then(response => {
-				if (response.data.errors && response.data.errors.length > 0) {
-					this.props.messageShow(response.data.errors[0].message)
-				} else {
-					this.props.messageShow('Subscribed successfully.')
-					
-					this.props.history.push(userRoutes.subscriptions.path)
-				}
-			})
+				.then(response => {
+					if (response.data.errors && response.data.errors.length > 0) {
+						this.props.messageShow(response.data.errors[0].message)
+					} else {
+						this.props.messageShow('Subscribed successfully.')
+						
+						this.props.history.push(userRoutes.subscriptions.path)
+					}
+				})
 				.catch(error => {
 					this.props.messageShow('There was some error subscribing to this crate. Please try again.')
 				})

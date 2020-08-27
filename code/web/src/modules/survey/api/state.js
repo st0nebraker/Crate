@@ -1,13 +1,12 @@
 import {
-	GET_STYLE_PREF,
-	GET_SURVEY_PRODUCTS,
-	SURVEY_GET_LIST_FAILURE,
-	PARSE_SURVEY_ITEMS,
 	STYLE_PREF_REQUEST,
 	STYLE_PREF_RESPONSE,
 	PRODUCTS_GET_LIST_FAILURE,
 	UPDATE_STYLE_PREF,
-	UPDATE_STYLE_PREF_FAILURE
+	UPDATE_STYLE_PREF_FAILURE,
+	GET_STYLE_PREF,
+	GET_SURVEY_PRODUCTS,
+	SURVEY_GET_LIST_FAILURE,
 } from './actions'
 import { products } from '../../product/api/state'
 
@@ -27,6 +26,7 @@ export const stylePreference = (state = styleInitialState, action) => {
 		case GET_STYLE_PREF:
 			return {
 				...state,
+				style: action.styleResult,
 				error: null
 			}
 

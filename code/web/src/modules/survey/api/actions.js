@@ -15,37 +15,60 @@ export const SURVEY_GET_LIST_FAILURE = 'SURVEY_GET_LIST_FAILURE'
 export function getStylePref(forceRefresh = false) {
   return dispatch => {
     dispatch({
-      type: GET_STYLE_PREF,
+      type: STYLE_PREF_REQUEST,
       error: null
     })
 
-    // return axios.post(routeApi, query({
-		//   operation: 'styleUpdate', //fn name in query/mutation files
-		//	variables: { style } //the args in that fn
-    //   fields: ['style'] //fields in type file
-    // }))
-    //   .then(response => {
-    //     if (response.status === 200) {
-    //       dispatch({
-    //         type: ADD_STYLE_PREF,
-    //         style
-    //         isLoading: false,
-    //       }) // is the response coming from the resolvers file?
-    //     } else {
-    //       dispatch({
-    //         type: PRODUCTS_GET_LIST_FAILURE,
-    //         error: 'Some error occurred. Please try again.',
-    //         isLoading: false
-    //       })
-    //     }
-    //   })
-    //   .catch(error => {
-    //       dispatch({
-    //         type: PRODUCTS_GET_LIST_FAILURE,
-    //         error: 'Some error occurred. Please try again.',
-    //         isLoading: false
-    //       })
-    //   })
+    return axios.post(routeApi, query({
+		  operation: 'user', //fn name in query/mutation files
+			variables: { id }, // user id //the args in that fn
+      fields: ['styleResult'] //fields in type file
+    }))
+      .then(response => {
+        if (response.status === 200) {
+          dispatch({
+            type: STYLE_PREF_RESPONSE,
+            styleResult
+          })
+        }
+      })
+      .catch(error => {
+          dispatch({
+            type: PRODUCTS_GET_LIST_FAILURE,//make reducer for
+            error: 'Some error occurred. Please try again.',
+            isLoading: false
+          })
+      })
+  }
+}
+
+export function updateStylePref(forceRefresh = false) {
+  return dispatch => {
+    dispatch({
+      type: UPDATE_STYLE_PREF,
+      error: null
+    })
+
+    return axios.post(routeApi, mutation({
+		  operation: 'user', //fn name in query/mutation files
+			variables: { id, styleResult }, // user id //the args in that fn
+      fields: ['id', 'styleResult'] //fields in type file
+    }))
+      .then(response => {
+        if (response.status === 200) {
+          dispatch({
+            type: UPDATE_STYLE_PREF,
+            styleResult
+          })
+        }
+      })
+      .catch(error => {
+          dispatch({
+            type: UPDATE_STYLE_PREF_FAILURE,//make reducer for
+            error: 'Some error occurred. Please try again.',
+            isLoading: false
+          })
+      })
   }
 }
 

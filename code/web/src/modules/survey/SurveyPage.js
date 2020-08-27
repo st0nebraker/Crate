@@ -79,24 +79,25 @@ class SurveyPage extends PureComponent {
 
   render() {
     return (
-		<div>	
-		<form>
-			<Helmet>
-          		<title>Style Survey</title>
-       		</Helmet>
-        	<Grid style={{ backgroundColor: grey }}>
-          		<GridCell style={{ padding: '2em', textAlign: 'center' }}>
-					<H3 font="secondary">What's your style?</H3>
-					<p style={{ marginTop: '1em', color: grey2 }}>Choose the style that speaks to you for each category below.</p>
-         		</GridCell>
-       		</Grid>
-			<Grid>
-				<label>
-					<H4 font="secondary" style={{ marginLeft: '.2em', marginTop: '1em' }}>Tops</H4>
-				</label>
-			</Grid>
+			<div>
+				<form>
+				<Helmet>
+          <title>Style Survey - Crate</title>
+        </Helmet>
+
+        <Grid style={{ backgroundColor: grey }}>
+          <GridCell style={{ padding: '2em', textAlign: 'center' }}>
+						<H3 font="secondary">What's your style?</H3>
+
+						<p style={{ marginTop: '1em', color: grey2 }}>Choose the style that speaks to you for each category below.</p>
+          </GridCell>
+        </Grid>
+
+				<Grid>
+					<label><H4 font="secondary" style={{ marginLeft: '.2em', marginTop: '1em' }}>Tops</H4></label>
+				</Grid>
 				{this.state.parsedItems.rocker.length > 0 ? 
-					(<Grid style={{ height: '24vh', width: '100vw', display: 'flex', flexWrap: 'nowrap', overflowX: 'auto' }}>
+					(<Grid style={{ height: '24vh', minHeight: '308px', width: '100vw', display: 'flex', flexWrap: 'nowrap', overflowX: 'auto' }}>
 						<GridCell>
 							<Card style={{ marginTop: '2em', width: '19em', backgroundColor: white, marginLeft: '9px' }} key='rocker-top'>
 								<div style={{ display: 'flex' }}>
@@ -170,7 +171,7 @@ class SurveyPage extends PureComponent {
 					</label>
 				</Grid>
 				{this.state.parsedItems.rocker.length > 0 ? 
-					(<Grid style={{ height: '24vh', width: '100vw', display: 'flex', flexWrap: 'nowrap', overflowX: 'auto' }}>
+					(<Grid style={{ height: '24vh', minHeight: '308px', width: '100vw', display: 'flex', flexWrap: 'nowrap', overflowX: 'auto' }}>
 						<GridCell>
 							<Card style={{ marginTop: '2em', width: '19em', backgroundColor: white, marginLeft: '9px' }} key='rocker-bottom'>
 								<div style={{ display: 'flex' }}>
@@ -243,7 +244,7 @@ class SurveyPage extends PureComponent {
 					</label>						
 				</Grid>
 				{this.state.parsedItems.rocker.length > 0 ? 
-					(<Grid style={{ height: '24vh', width: '100vw', display: 'flex', flexWrap: 'nowrap', overflowX: 'auto' }}>
+					(<Grid style={{ height: '24vh', minHeight: '308px', width: '100vw', display: 'flex', flexWrap: 'nowrap', overflowX: 'auto' }}>
 						<GridCell>
 							<Card style={{ marginTop: '2em', width: '19em', backgroundColor: white, marginLeft: '9px' }} key='rocker-shoes'>
 								<div style={{ display: 'flex' }}>

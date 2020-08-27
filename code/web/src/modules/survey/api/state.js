@@ -25,24 +25,26 @@ export const stylePreference = (state = styleInitialState, action) => {
 				error: null
 			}
 
-		// case STYLE_PREF_REQUEST:
-		// 	return {
-		// 		...state,
-		// 		isLoading: action.isLoading,
-		// 		error: null
-		// 	}
+		case STYLE_PREF_REQUEST:
+			return {
+				...state,
+				error: null,
+				style: action.styleResult
+			}
 
-		// case STYLE_PREF_RESPONSE:
-		// 	return {
-		// 		...state,
-		// 		isLoading: false,
-		// 		error: action.error
-		// 	}
+		case STYLE_PREF_RESPONSE:
+			return {
+				...state,
+				error: action.error,
+				style: action.styleResult
+			}
 
-		// case ADD_STYLE_PREF:
-		// 		return {
-		// 			//update on survey submission
-		// 		}
+		case UPDATE_STYLE_PREF:
+			return {
+				...state,
+				error: action.error,
+				style: action.styleResult
+			}
 		
 		default:
 			return state

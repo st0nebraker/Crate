@@ -10,7 +10,7 @@ export default {
 
 	surveyResults: {
 		path: '/style-preference',
-    component: SurveyPage,
+    component: SurveyResults,
     auth: true
 	}
 }

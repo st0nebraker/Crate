@@ -24,8 +24,37 @@ class SurveyPage extends PureComponent {
     super(props)
     this.state = {
 			isLoading: false,
-			parsedItems: {rocker: [], bohemian: [], business: [], artsy: []}
-    }
+			parsedItems: {rocker: [], bohemian: [], business: [], artsy: []},
+			topStyle: [],
+			bottomStyle: [],
+			shoeStyle: []
+	    }
+	}
+
+	handleChange = (event) => {
+		const { name, value } = event.target
+		if(this.state[name].length < 2 && !this.state[name].includes(value)) {
+			// console.log('event', event.target.checked);
+			this.setState({ [name]: [...this.state[name], value] }, () => {
+				// console.log(this.state)
+			})
+		} else if (this.state[name].length === 2) {
+			const array = this.state[name].filter(element => element !== value )
+			this.setState({
+				[name]: array
+			})
+		}
+	}
+
+	handleSubmit = () => {
+		const { topStyle, bottomStyle, shoeStyle } = this.state
+		const compileUserInputs = [...topStyle, ...bottomStyle, ...shoeStyle].reduce((acc, style) => {
+			acc[style] ++
+			return acc
+		}, {rocker: 0, bohemian: 0, business: 0, artsy: 0})
+
+		const calculatedStyle = Object.keys(compileUserInputs).sort((a, b) => compileUserInputs[b] - compileUserInputs[a]);
+		console.log(calculatedStyle[0])
 	}
 	
   static fetchData({ store }) {
@@ -50,22 +79,22 @@ class SurveyPage extends PureComponent {
 
   render() {
     return (
-			<div>
-				<Helmet>
-          <title>Style Survey</title>
-        </Helmet>
-
-        <Grid style={{ backgroundColor: grey }}>
-          <GridCell style={{ padding: '2em', textAlign: 'center' }}>
-						<H3 font="secondary">What's your style?</H3>
-
-						<p style={{ marginTop: '1em', color: grey2 }}>Choose the style that speaks to you for each category below.</p>
-          </GridCell>
-        </Grid>
-
-				<Grid>
+		<div>	
+		<form>
+			<Helmet>
+          		<title>Style Survey</title>
+       		</Helmet>
+        	<Grid style={{ backgroundColor: grey }}>
+          		<GridCell style={{ padding: '2em', textAlign: 'center' }}>
+					<H3 font="secondary">What's your style?</H3>
+					<p style={{ marginTop: '1em', color: grey2 }}>Choose the style that speaks to you for each category below.</p>
+         		</GridCell>
+       		</Grid>
+			<Grid>
+				<label>
 					<H4 font="secondary" style={{ marginLeft: '.2em', marginTop: '1em' }}>Tops</H4>
-				</Grid>
+				</label>
+			</Grid>
 				{this.state.parsedItems.rocker.length > 0 ? 
 					(<Grid style={{ height: '24vh', width: '100vw', display: 'flex', flexWrap: 'nowrap', overflowX: 'auto' }}>
 						<GridCell>
@@ -74,7 +103,14 @@ class SurveyPage extends PureComponent {
 									<img src={routeImage + this.state.parsedItems.rocker[1].image} alt={this.state.parsedItems.rocker[1].name} style={{ width: '50%' }}/>
 									<img src={routeImage + this.state.parsedItems.rocker[2].image} alt={this.state.parsedItems.rocker[2].name} style={{ width: '50%' }}/>
 								</div>
-								<input type="radio" style={{ marginLeft: '50%' }} />
+								<input 
+									value='rocker'  
+									type="checkbox" 
+									style={{ marginLeft: '50%' }}
+									checked={this.state.topStyle.includes('rocker')}
+									onChange={this.handleChange}
+									name='topStyle'
+								/>
 							</Card>
 						</GridCell>
 						<GridCell>
@@ -83,7 +119,14 @@ class SurveyPage extends PureComponent {
 									<img src={routeImage + this.state.parsedItems.bohemian[1].image} alt={this.state.parsedItems.bohemian[1].name} style={{ width: '50%' }}/>
 									<img src={routeImage + this.state.parsedItems.bohemian[2].image} alt={this.state.parsedItems.bohemian[2].name} style={{ width: '50%' }}/>
 								</div>
-								<input type="radio" style={{ marginLeft: '50%' }} />
+								<input 
+									value='bohemian' 
+									type="checkbox" 
+									style={{ marginLeft: '50%' }} 
+									checked={this.state.topStyle.includes('bohemian')}
+									onChange={this.handleChange}
+									name='topStyle'
+								/>
 							</Card>
 						</GridCell>
 						<GridCell>
@@ -92,7 +135,14 @@ class SurveyPage extends PureComponent {
 									<img src={routeImage + this.state.parsedItems.business[1].image} alt={this.state.parsedItems.business[1].name} style={{ width: '50%' }}/>
 									<img src={routeImage + this.state.parsedItems.business[2].image} alt={this.state.parsedItems.business[2].name} style={{ width: '50%' }}/>
 								</div>
-								<input type="radio" style={{ marginLeft: '50%' }} />
+								<input 
+									value='classic' 
+									type="checkbox" 
+									style={{ marginLeft: '50%' }} 
+									checked={this.state.topStyle.includes('classic')}
+									onChange={this.handleChange}
+									name='topStyle'
+								/>
 							</Card>
 						</GridCell>
 						<GridCell>
@@ -101,14 +151,23 @@ class SurveyPage extends PureComponent {
 									<img src={routeImage + this.state.parsedItems.artsy[1].image} alt={this.state.parsedItems.artsy[1].name} style={{ width: '50%' }}/>
 									<img src={routeImage + this.state.parsedItems.artsy[2].image} alt={this.state.parsedItems.artsy[2].name} style={{ width: '50%' }}/>
 								</div>
-								<input type="radio" style={{ marginLeft: '50%' }} />
+								<input 
+									value='artsy' 
+									type="checkbox" 
+									style={{ marginLeft: '50%' }} 
+									checked={this.state.topStyle.includes('artsy')}
+									onChange={this.handleChange}
+									name='topStyle'
+								/>
 							</Card>
 						</GridCell>
 					</Grid>) : null
 				}
 
 				<Grid>
-					<H4 font="secondary" style={{ marginLeft: '.2em', marginTop: '1em' }}>Bottoms</H4>
+					<label>
+						<H4 font="secondary" style={{ marginLeft: '.2em', marginTop: '1em' }}>Bottoms</H4>
+					</label>
 				</Grid>
 				{this.state.parsedItems.rocker.length > 0 ? 
 					(<Grid style={{ height: '24vh', width: '100vw', display: 'flex', flexWrap: 'nowrap', overflowX: 'auto' }}>
@@ -118,16 +177,30 @@ class SurveyPage extends PureComponent {
 									<img src={routeImage + this.state.parsedItems.rocker[5].image} alt={this.state.parsedItems.rocker[5].name} style={{ width: '50%' }}/>
 									<img src={routeImage + this.state.parsedItems.rocker[6].image} alt={this.state.parsedItems.rocker[6].name} style={{ width: '50%' }}/>
 								</div>
-								<input type="radio" style={{ marginLeft: '50%' }} />
+								<input 
+									value='rocker' 
+									type="checkbox" 
+									style={{ marginLeft: '50%' }} 
+									checked={this.state.bottomStyle.includes('rocker')}
+									onChange={this.handleChange}
+									name='bottomStyle'
+								/>
 							</Card>
 						</GridCell>
 						<GridCell>
 							<Card style={{ marginTop: '2em', width: '19em', backgroundColor: white, marginLeft: '9px' }} key='bohemian-bottom'>
 								<div style={{ display: 'flex' }}>
-									<img src={routeImage + this.state.parsedItems.bohemian[5].image} alt={this.state.parsedItems.bohemian[5].name} style={{ width: '50%' }}/>
-									<img src={routeImage + this.state.parsedItems.bohemian[6].image} alt={this.state.parsedItems.bohemian[6].name} style={{ width: '50%' }}/>
+									<img src={routeImage + this.state.parsedItems.bohemian[5].image} alt={this.state.parsedItems.bohemian[5].name} style={{ width: 'bottomStyle'}} />
+									<img src={routeImage + this.state.parsedItems.bohemian[6].image} alt={this.state.parsedItems.bohemian[6].name} style={{ width: 'bottomStyle'}} />
 								</div>
-								<input type="radio" style={{ marginLeft: '50%' }} />
+								<input 
+									value='bohemian' 
+									type="checkbox" 
+									style={{ marginLeft: '50%' }} 
+									checked={this.state.bottomStyle.includes('bohemian')}
+									onChange={this.handleChange}
+									name='bottomStyle'
+								/>
 							</Card>
 						</GridCell>
 						<GridCell>
@@ -136,7 +209,14 @@ class SurveyPage extends PureComponent {
 									<img src={routeImage + this.state.parsedItems.business[5].image} alt={this.state.parsedItems.business[5].name} style={{ width: '50%' }}/>
 									<img src={routeImage + this.state.parsedItems.business[6].image} alt={this.state.parsedItems.business[6].name} style={{ width: '50%' }}/>
 								</div>
-								<input type="radio" style={{ marginLeft: '50%' }} />
+								<input 
+									value='classic' 
+									type="checkbox" 
+									style={{ marginLeft: '50%' }} 
+									checked={this.state.bottomStyle.includes('classic')}
+									onChange={this.handleChange}
+									name='bottomStyle'
+								/>
 							</Card>
 						</GridCell>
 						<GridCell>
@@ -145,13 +225,22 @@ class SurveyPage extends PureComponent {
 									<img src={routeImage + this.state.parsedItems.artsy[5].image} alt={this.state.parsedItems.artsy[5].name} style={{ width: '50%' }}/>
 									<img src={routeImage + this.state.parsedItems.artsy[6].image} alt={this.state.parsedItems.artsy[6].name} style={{ width: '50%' }}/>
 								</div>
-								<input type="radio" style={{ marginLeft: '50%' }} />
+								<input 
+									value='artsy' 
+									type="checkbox" 
+									style={{ marginLeft: '50%' }} 
+									checked={this.state.bottomStyle.includes('artsy')}
+									onChange={this.handleChange}
+									name='bottomStyle'
+								/>
 							</Card>
 						</GridCell>
 					</Grid>) : null
 				}
 				<Grid>
-					<H4 font="secondary" style={{ marginLeft: '.2em', marginTop: '1em' }}>Shoes</H4>
+					<label>
+						<H4 font="secondary" style={{ marginLeft: '.2em', marginTop: '1em' }}>Shoes</H4>
+					</label>						
 				</Grid>
 				{this.state.parsedItems.rocker.length > 0 ? 
 					(<Grid style={{ height: '24vh', width: '100vw', display: 'flex', flexWrap: 'nowrap', overflowX: 'auto' }}>
@@ -161,7 +250,14 @@ class SurveyPage extends PureComponent {
 									<img src={routeImage + this.state.parsedItems.rocker[3].image} alt={this.state.parsedItems.rocker[3].name} style={{ width: '50%' }}/>
 									<img src={routeImage + this.state.parsedItems.rocker[4].image} alt={this.state.parsedItems.rocker[4].name} style={{ width: '50%' }}/>
 								</div>
-								<input type="radio" style={{ marginLeft: '50%' }} />
+								<input 
+									value='rocker' 
+									type="checkbox" 
+									style={{ marginLeft: '50%' }} 
+									checked={this.state.shoeStyle.includes('rocker')}
+									onChange={this.handleChange}
+									name='shoeStyle'
+								/>
 							</Card>
 						</GridCell>
 						<GridCell>
@@ -170,7 +266,14 @@ class SurveyPage extends PureComponent {
 									<img src={routeImage + this.state.parsedItems.bohemian[3].image} alt={this.state.parsedItems.bohemian[3].name} style={{ width: '50%' }}/>
 									<img src={routeImage + this.state.parsedItems.bohemian[4].image} alt={this.state.parsedItems.bohemian[4].name} style={{ width: '50%' }}/>
 								</div>
-								<input type="radio" style={{ marginLeft: '50%' }} />
+								<input 
+									value='bohemian' 
+									type="checkbox" 
+									style={{ marginLeft: '50%' }} 
+									checked={this.state.shoeStyle.includes('bohemian')}
+									onChange={this.handleChange}
+									name='shoeStyle'
+								/>
 							</Card>
 						</GridCell>
 						<GridCell>
@@ -179,25 +282,39 @@ class SurveyPage extends PureComponent {
 									<img src={routeImage + this.state.parsedItems.business[3].image} alt={this.state.parsedItems.business[3].name} style={{ width: '50%' }}/>
 									<img src={routeImage + this.state.parsedItems.business[4].image} alt={this.state.parsedItems.business[4].name} style={{ width: '50%' }}/>
 								</div>
-								<input type="radio" style={{ marginLeft: '50%' }} />
+								<input 
+									value='classic' 
+									type="checkbox" 
+									style={{ marginLeft: '50%' }} 
+									checked={this.state.shoeStyle.includes('classic')}
+									onChange={this.handleChange}
+									name='shoeStyle'
+								/>
 							</Card>
 						</GridCell>
 						<GridCell>
 							<Card style={{ marginTop: '2em', width: '19em', backgroundColor: white, marginLeft: '9px' }} key='artsy-shoes'>
-								<div style={{ display: 'flex' }}>
+								<div style={{ display: 'flex' }}>	
 									<img src={routeImage + this.state.parsedItems.artsy[3].image} alt={this.state.parsedItems.artsy[3].name} style={{ width: '50%' }}/>
 									<img src={routeImage + this.state.parsedItems.artsy[4].image} alt={this.state.parsedItems.artsy[4].name} style={{ width: '50%' }}/>
 								</div>
-								<input type="radio" style={{ marginLeft: '50%' }} />
+								<input 
+									value='artsy' 
+									type="checkbox" 
+									style={{ marginLeft: '50%' }} 
+									checked={this.state.shoeStyle.includes('artsy')}
+									onChange={this.handleChange}
+									name='shoeStyle'
+								/>
 							</Card>
 						</GridCell>
 					</Grid>) : null
 				}
-
-				<Grid>
-				  <Button theme="secondary" style={{ marginLeft: '50%', marginTop: '2em', marginBottom: '2em' }}>Submit</Button>
-				</Grid>
-			</div>
+			<Grid>
+				<Button theme="secondary" style={{ marginLeft: '50%', marginTop: '2em', marginBottom: '2em' }} onClick={ this.handleSubmit } >Submit</Button>
+			</Grid>
+		</form>
+		</div>
 		)
 	}
 }

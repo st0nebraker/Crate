@@ -6,6 +6,11 @@ import { query, mutation } from 'gql-query-builder'
 import { routeApi } from '../../../setup/routes'
 
 // Actions Types
+export const STYLE_PREF_REQUEST = 'STYLE_PREF_REQUEST'
+export const STYLE_PREF_RESPONSE = 'STYLE_PREF_RESPONSE'
+export const PRODUCTS_GET_LIST_FAILURE = 'PRODUCTS_GET_LIST_FAILURE'
+export const UPDATE_STYLE_PREF = 'UPDATE_STYLE_PREF'
+export const UPDATE_STYLE_PREF_FAILURE = 'UPDATE_STYLE_PREF_FAILURE'
 export const GET_STYLE_PREF = 'GET_STYLE_PREF'
 export const GET_SURVEY_PRODUCTS = 'GET_SURVEY_PRODUCTS'
 export const SURVEY_GET_LIST_FAILURE = 'SURVEY_GET_LIST_FAILURE'

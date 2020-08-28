@@ -2,18 +2,21 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
 // UI Imports
 import { Grid, GridCell } from '../../ui/grid'
 import { white, grey, grey2, black } from '../../ui/common/colors'
 import Button from '../../ui/button/Button'
+import Card from '../../ui/card/Card'
 import { H3, H4 } from '../../ui/typography'
 
 // App Imports
 import { APP_URL } from '../../setup/config/env'
 import { routeImage, routes } from '../../setup/routes'
+import crateRoutes from '../../setup/routes/crate'
+import surveyRoutes from '../../setup/routes/survey'
 import { messageShow, messageHide } from '../common/api/actions'
 import { getSurveyProducts, parseSurveyItems } from './api/actions'
 
@@ -51,11 +54,22 @@ class SurveyResults extends PureComponent {_
 				</GridCell>
 			</Grid>
 
-			<Grid style={{ display: 'flex', flexDirection: 'column', height: '61vh', justifyContent: 'space-evenly', alignItems: 'center' }}>
-				<p style={{ marginTop: '1em', color: black }}>My style is...</p>
+			<Grid style={{ display: 'flex', flexDirection: 'column', height: '80vh', justifyContent: 'space-between', alignItems: 'center', margiTop: '4em' }}>
+				<Card style={{ display: 'flex', height: '70vh', flexDirection: 'column', justifyContent: 'space-evenly', alignItems: 'center', width: '80vw', backgroundColor: white, marginTop: '2em' }} key='style-result'>
+					<p style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: black }}>My style is...</p>
+					<img src={routeImage + this.state.styleResult} alt={this.state.styleResult} style={{ width: '60%' }}/>
+					<H4 font="secondary">{this.state.styleName}</H4>
+				
+					<div style={{ width: '70%', display: 'flex', justifyContent: 'space-evenly' }}>
+						<Link to={crateRoutes.list.path}>
+							<Button theme="secondary">Find Subscription</Button>
+						</Link>
 
-				<H4 font="secondary">Artsy-Bohemian</H4>
-				<Button theme="secondary" style={{ marginBottom: '2em' }}>Find Subscription</Button>
+						<Link to={surveyRoutes.survey.path}>
+							<Button theme="secondary">Change Style</Button>
+						</Link>
+					</div>
+				</Card>
 			</Grid>
 		</div>
 		)

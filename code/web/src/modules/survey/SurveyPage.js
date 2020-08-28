@@ -136,10 +136,10 @@ class SurveyPage extends PureComponent {
 									<img src={routeImage + this.state.parsedItems.business[2].image} alt={this.state.parsedItems.business[2].name} style={{ width: '50%' }}/>
 								</div>
 								<input 
-									value='classic' 
+									value='business' 
 									type="checkbox" 
 									style={{ marginLeft: '50%' }} 
-									checked={this.state.topStyle.includes('classic')}
+									checked={this.state.topStyle.includes('business')}
 									onChange={this.handleChange}
 									name='topStyle'
 								/>
@@ -210,10 +210,10 @@ class SurveyPage extends PureComponent {
 									<img src={routeImage + this.state.parsedItems.business[6].image} alt={this.state.parsedItems.business[6].name} style={{ width: '50%' }}/>
 								</div>
 								<input 
-									value='classic' 
+									value='business' 
 									type="checkbox" 
 									style={{ marginLeft: '50%' }} 
-									checked={this.state.bottomStyle.includes('classic')}
+									checked={this.state.bottomStyle.includes('business')}
 									onChange={this.handleChange}
 									name='bottomStyle'
 								/>
@@ -283,10 +283,10 @@ class SurveyPage extends PureComponent {
 									<img src={routeImage + this.state.parsedItems.business[4].image} alt={this.state.parsedItems.business[4].name} style={{ width: '50%' }}/>
 								</div>
 								<input 
-									value='classic' 
+									value='business' 
 									type="checkbox" 
 									style={{ marginLeft: '50%' }} 
-									checked={this.state.shoeStyle.includes('classic')}
+									checked={this.state.shoeStyle.includes('business')}
 									onChange={this.handleChange}
 									name='shoeStyle'
 								/>

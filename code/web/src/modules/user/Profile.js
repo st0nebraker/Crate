@@ -13,6 +13,7 @@ import { grey, grey2 } from '../../ui/common/colors'
 
 // App Imports
 import userRoutes from '../../setup/routes/user'
+import surveyRoutes from '../../setup/routes/survey'
 import { logout } from './api/actions'
 
 // Component
@@ -33,14 +34,19 @@ const Profile = (props) => (
     <Grid>
       <GridCell style={{ padding: '2em', textAlign: 'center' }}>
         <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>
-				{/* console.log(props.user) */}
         <p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>
 
-        <Link to={userRoutes.subscriptions.path}>
-          <Button theme="primary">Subscriptions</Button>
-        </Link>
+				<div style={{ width: '100%', display: 'flex', justifyContent: 'space-evenly' }}>
+					<Link to={surveyRoutes.surveyResults.path}>
+						<Button theme="primary">Style Preference</Button>
+					</Link>
 
-        <Button theme="secondary" onClick={props.logout} style={{ marginLeft: '1em' }}>Logout</Button>
+					<Link to={userRoutes.subscriptions.path}>
+						<Button theme="primary">Subscriptions</Button>
+					</Link>
+
+					<Button theme="secondary" onClick={props.logout} style={{ marginLeft: '1em' }}>Logout</Button>
+				</div>
       </GridCell>
     </Grid>
   </div>

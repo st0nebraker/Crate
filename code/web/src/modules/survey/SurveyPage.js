@@ -31,6 +31,30 @@ class SurveyPage extends PureComponent {
 			shoeStyle: []
 	    }
 	}
+
+	handleChange = (event) => {
+		const { name, value } = event.target
+		if(this.state[name].length < 2 && !this.state[name].includes(value)) {
+			// console.log('event', event.target.checked);
+			this.setState({ [name]: [...this.state[name], value] })
+		} else if (this.state[name].length === 2) {
+			const array = this.state[name].filter(element => element !== value )
+			this.setState({
+				[name]: array
+			})
+		}
+	}
+
+	handleSubmit = () => {
+		const { topStyle, bottomStyle, shoeStyle } = this.state
+		const compileUserInputs = [...topStyle, ...bottomStyle, ...shoeStyle].reduce((acc, style) => {
+			acc[style] ++
+			return acc
+		}, {rocker: 0, bohemian: 0, business: 0, artsy: 0})
+
+		const calculatedStyle = Object.keys(compileUserInputs).sort((a, b) => compileUserInputs[b] - compileUserInputs[a]);
+		console.log(calculatedStyle[0])
+	}
 		
   static fetchData({ store }) {
     return store.dispatch(getSurveyProducts())

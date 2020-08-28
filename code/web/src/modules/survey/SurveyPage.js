@@ -117,7 +117,7 @@ class SurveyPage extends PureComponent {
         </Grid>
 
 				<Grid>
-					<label><H4 font="secondary" style={{ marginLeft: '.2em', marginTop: '1em' }}>Tops</H4></label>
+					<H4 data-testid='stylePage-greeting' font="secondary" style={{ marginLeft: '.2em', marginTop: '1em' }}>Tops</H4>
 				</Grid>
 				{this.state.parsedItems.rocker.length > 0 ? 
 					(<Grid style={{ height: '24vh', minHeight: '308px', width: '100vw', display: 'flex', flexWrap: 'nowrap', overflowX: 'auto' }}>
@@ -334,11 +334,11 @@ class SurveyPage extends PureComponent {
 						</GridCell>
 					</Grid>) : null
 				}
-			<Grid>
-				<Button theme="secondary" style={{ marginLeft: '50%', marginTop: '2em', marginBottom: '2em' }} onClick={ this.handleSubmit } >Submit</Button>
-			</Grid>
-		</form>
-		</div>
+				<Grid>
+				  <Button theme="secondary" style={{ marginLeft: '50%', marginTop: '2em', marginBottom: '2em' }}>Submit</Button>
+				</Grid>
+				</form>
+			</div>
 		)
 	}
 }

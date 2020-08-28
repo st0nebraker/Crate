@@ -6,6 +6,11 @@ import { query, mutation } from 'gql-query-builder'
 import { routeApi } from '../../../setup/routes'
 
 // Actions Types
+export const STYLE_PREF_REQUEST = 'STYLE_PREF_REQUEST'
+export const STYLE_PREF_RESPONSE = 'STYLE_PREF_RESPONSE'
+export const PRODUCTS_GET_LIST_FAILURE = 'PRODUCTS_GET_LIST_FAILURE'
+export const UPDATE_STYLE_PREF = 'UPDATE_STYLE_PREF'
+export const UPDATE_STYLE_PREF_FAILURE = 'UPDATE_STYLE_PREF_FAILURE'
 export const GET_STYLE_PREF = 'GET_STYLE_PREF'
 export const GET_SURVEY_PRODUCTS = 'GET_SURVEY_PRODUCTS'
 export const SURVEY_GET_LIST_FAILURE = 'SURVEY_GET_LIST_FAILURE'
@@ -15,37 +20,56 @@ export const SURVEY_GET_LIST_FAILURE = 'SURVEY_GET_LIST_FAILURE'
 export function getStylePref(forceRefresh = false) {
   return dispatch => {
     dispatch({
-      type: GET_STYLE_PREF,
+      type: STYLE_PREF_REQUEST,
       error: null
     })
 
-    // return axios.post(routeApi, query({
-		//   operation: 'styleUpdate', //fn name in query/mutation files
-		//	variables: { style } //the args in that fn
-    //   fields: ['style'] //fields in type file
-    // }))
-    //   .then(response => {
-    //     if (response.status === 200) {
-    //       dispatch({
-    //         type: ADD_STYLE_PREF,
-    //         style
-    //         isLoading: false,
-    //       }) // is the response coming from the resolvers file?
-    //     } else {
-    //       dispatch({
-    //         type: PRODUCTS_GET_LIST_FAILURE,
-    //         error: 'Some error occurred. Please try again.',
-    //         isLoading: false
-    //       })
-    //     }
-    //   })
-    //   .catch(error => {
-    //       dispatch({
-    //         type: PRODUCTS_GET_LIST_FAILURE,
-    //         error: 'Some error occurred. Please try again.',
-    //         isLoading: false
-    //       })
-    //   })
+    return axios.post(routeApi, query({
+		  operation: 'user', //fn name in query/mutation files
+			variables: { id }, // user id //the args in that fn
+      fields: ['styleResult'] //fields in type file
+    }))
+      .then(response => {
+        if (response.status === 200) {
+          dispatch({
+            type: STYLE_PREF_RESPONSE,
+            styleResult
+          })
+        }
+      })
+      .catch(error => {
+          dispatch({
+            type: PRODUCTS_GET_LIST_FAILURE,//make reducer for
+            error: 'Some error occurred. Please try again.',
+            isLoading: false
+          })
+      })
+  }
+}
+
+export function updateStylePref(id, styleResult) {
+  return dispatch => {
+    return axios.post(routeApi, mutation({
+		  operation: 'userUpdate', //fn name in query/mutation files
+			variables: { id, styleResult }, // user id //the args in that fn
+      fields: ['styleResult'] //fields in type file
+    }))
+      .then(response => {
+        if (response.status === 200) {
+          dispatch({
+						type: UPDATE_STYLE_PREF,
+						error: null,
+            styleResult: response.data.data.userUpdate.styleResult
+          })
+        }
+      })
+      // .catch(error => {
+      //     dispatch({
+      //       type: UPDATE_STYLE_PREF_FAILURE,//make reducer for
+      //       error: 'Some error occurred. Please try again.',
+      //       isLoading: false
+      //     })
+      // })
   }
 }
 
@@ -62,7 +86,6 @@ export function getSurveyProducts(isLoading = true, forceRefresh = false) {
 						error: null,
 						list: response.data.data.products
 					})
-				return response
 			})
       .catch(error => {
           dispatch({

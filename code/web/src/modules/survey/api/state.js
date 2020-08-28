@@ -1,8 +1,12 @@
 import {
+	STYLE_PREF_REQUEST,
+	STYLE_PREF_RESPONSE,
+	PRODUCTS_GET_LIST_FAILURE,
+	UPDATE_STYLE_PREF,
+	UPDATE_STYLE_PREF_FAILURE,
 	GET_STYLE_PREF,
 	GET_SURVEY_PRODUCTS,
 	SURVEY_GET_LIST_FAILURE,
-	PARSE_SURVEY_ITEMS
 } from './actions'
 import { products } from '../../product/api/state'
 
@@ -22,27 +26,30 @@ export const stylePreference = (state = styleInitialState, action) => {
 		case GET_STYLE_PREF:
 			return {
 				...state,
+				style: action.styleResult,
 				error: null
 			}
 
-		// case STYLE_PREF_REQUEST:
-		// 	return {
-		// 		...state,
-		// 		isLoading: action.isLoading,
-		// 		error: null
-		// 	}
+		case STYLE_PREF_REQUEST:
+			return {
+				...state,
+				error: null,
+				style: action.styleResult
+			}
 
-		// case STYLE_PREF_RESPONSE:
-		// 	return {
-		// 		...state,
-		// 		isLoading: false,
-		// 		error: action.error
-		// 	}
+		case STYLE_PREF_RESPONSE:
+			return {
+				...state,
+				error: action.error,
+				style: action.styleResult
+			}
 
-		// case ADD_STYLE_PREF:
-		// 		return {
-		// 			//update on survey submission
-		// 		}
+		case UPDATE_STYLE_PREF:
+			return {
+				...state,
+				error: action.error,
+				style: action.styleResult
+			}
 		
 		default:
 			return state

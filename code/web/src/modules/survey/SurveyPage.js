@@ -15,8 +15,9 @@ import { H3, H4 } from '../../ui/typography'
 // App Imports
 import { APP_URL } from '../../setup/config/env'
 import { routeImage, routes } from '../../setup/routes'
+import surveyRoutes from '../../setup/routes/survey'
 import { messageShow, messageHide } from '../common/api/actions'
-import { getSurveyProducts, parseSurveyItems } from './api/actions'
+import { getSurveyProducts, updateStylePref } from './api/actions'
 
 // Component
 class SurveyPage extends PureComponent {
@@ -30,14 +31,31 @@ class SurveyPage extends PureComponent {
 			shoeStyle: []
 	    }
 	}
+		
+  static fetchData({ store }) {
+    return store.dispatch(getSurveyProducts())
+  }
+	
+	componentDidMount() {
+		this.props.getSurveyProducts();
+	}
+	
+	componentDidUpdate() {
+		if (this.state.parsedItems.rocker.length === 0) {
+			const inSurveyItems = this.props.surveyProducts.products.filter(item => item.isSurvey);
+			const filteredItems = inSurveyItems.reduce((acc, item) => {
+				acc[item.style].push(item);
+				
+				return acc;
+			}, {rocker: [], bohemian: [], business: [], artsy: []}); 
+			this.setState({parsedItems: filteredItems});
+		}
+	}
 
 	handleChange = (event) => {
 		const { name, value } = event.target
 		if(this.state[name].length < 2 && !this.state[name].includes(value)) {
-			// console.log('event', event.target.checked);
-			this.setState({ [name]: [...this.state[name], value] }, () => {
-				// console.log(this.state)
-			})
+			this.setState({ [name]: [...this.state[name], value] })
 		} else if (this.state[name].length === 2) {
 			const array = this.state[name].filter(element => element !== value )
 			this.setState({
@@ -54,49 +72,31 @@ class SurveyPage extends PureComponent {
 		}, {rocker: 0, bohemian: 0, business: 0, artsy: 0})
 
 		const calculatedStyle = Object.keys(compileUserInputs).sort((a, b) => compileUserInputs[b] - compileUserInputs[a]);
-		console.log(calculatedStyle[0])
-	}
-	
-  static fetchData({ store }) {
-    return store.dispatch(getSurveyProducts())
-  }
-
-	componentDidMount() {
-		this.props.getSurveyProducts();
-	}
-	
-	componentDidUpdate() {
-		if (this.state.parsedItems.rocker.length === 0) {
-			const inSurveyItems = this.props.surveyProducts.products.filter(item => item.isSurvey);
-			const filteredItems = inSurveyItems.reduce((acc, item) => {
-				acc[item.style].push(item);
-				
-				return acc;
-			}, {rocker: [], bohemian: [], business: [], artsy: []}); 
-			this.setState({parsedItems: filteredItems})
-		}
+		this.props.updateStylePref(this.props.user.details.id, calculatedStyle[0])
+		this.props.history.push(surveyRoutes.surveyResults.path)
 	}
 
   render() {
     return (
-		<div>	
-		<form>
-			<Helmet>
-          		<title>Style Survey</title>
-       		</Helmet>
-        	<Grid style={{ backgroundColor: grey }}>
-          		<GridCell style={{ padding: '2em', textAlign: 'center' }}>
-					<H3 font="secondary">What's your style?</H3>
-					<p style={{ marginTop: '1em', color: grey2 }}>Choose the style that speaks to you for each category below.</p>
-         		</GridCell>
-       		</Grid>
-			<Grid>
-				<label>
-					<H4 font="secondary" style={{ marginLeft: '.2em', marginTop: '1em' }}>Tops</H4>
-				</label>
-			</Grid>
+			<div>
+				<form>
+				<Helmet>
+          <title>Style Survey - Crate</title>
+        </Helmet>
+
+        <Grid style={{ backgroundColor: grey }}>
+          <GridCell style={{ padding: '2em', textAlign: 'center' }}>
+						<H3 font="secondary">What's your style?</H3>
+
+						<p style={{ marginTop: '1em', color: grey2 }}>Choose the style that speaks to you for each category below.</p>
+          </GridCell>
+        </Grid>
+
+				<Grid>
+					<label><H4 font="secondary" style={{ marginLeft: '.2em', marginTop: '1em' }}>Tops</H4></label>
+				</Grid>
 				{this.state.parsedItems.rocker.length > 0 ? 
-					(<Grid style={{ height: '24vh', width: '100vw', display: 'flex', flexWrap: 'nowrap', overflowX: 'auto' }}>
+					(<Grid style={{ height: '24vh', minHeight: '308px', width: '100vw', display: 'flex', flexWrap: 'nowrap', overflowX: 'auto' }}>
 						<GridCell>
 							<Card style={{ marginTop: '2em', width: '19em', backgroundColor: white, marginLeft: '9px' }} key='rocker-top'>
 								<div style={{ display: 'flex' }}>
@@ -136,10 +136,10 @@ class SurveyPage extends PureComponent {
 									<img src={routeImage + this.state.parsedItems.business[2].image} alt={this.state.parsedItems.business[2].name} style={{ width: '50%' }}/>
 								</div>
 								<input 
-									value='classic' 
+									value='business' 
 									type="checkbox" 
 									style={{ marginLeft: '50%' }} 
-									checked={this.state.topStyle.includes('classic')}
+									checked={this.state.topStyle.includes('business')}
 									onChange={this.handleChange}
 									name='topStyle'
 								/>
@@ -170,7 +170,7 @@ class SurveyPage extends PureComponent {
 					</label>
 				</Grid>
 				{this.state.parsedItems.rocker.length > 0 ? 
-					(<Grid style={{ height: '24vh', width: '100vw', display: 'flex', flexWrap: 'nowrap', overflowX: 'auto' }}>
+					(<Grid style={{ height: '24vh', minHeight: '308px', width: '100vw', display: 'flex', flexWrap: 'nowrap', overflowX: 'auto' }}>
 						<GridCell>
 							<Card style={{ marginTop: '2em', width: '19em', backgroundColor: white, marginLeft: '9px' }} key='rocker-bottom'>
 								<div style={{ display: 'flex' }}>
@@ -190,8 +190,8 @@ class SurveyPage extends PureComponent {
 						<GridCell>
 							<Card style={{ marginTop: '2em', width: '19em', backgroundColor: white, marginLeft: '9px' }} key='bohemian-bottom'>
 								<div style={{ display: 'flex' }}>
-									<img src={routeImage + this.state.parsedItems.bohemian[5].image} alt={this.state.parsedItems.bohemian[5].name} style={{ width: 'bottomStyle'}} />
-									<img src={routeImage + this.state.parsedItems.bohemian[6].image} alt={this.state.parsedItems.bohemian[6].name} style={{ width: 'bottomStyle'}} />
+									<img src={routeImage + this.state.parsedItems.bohemian[5].image} alt={this.state.parsedItems.bohemian[5].name} style={{ width: '50%'}}/>
+									<img src={routeImage + this.state.parsedItems.bohemian[6].image} alt={this.state.parsedItems.bohemian[6].name} style={{ width: '50%'}}/>
 								</div>
 								<input 
 									value='bohemian' 
@@ -210,10 +210,10 @@ class SurveyPage extends PureComponent {
 									<img src={routeImage + this.state.parsedItems.business[6].image} alt={this.state.parsedItems.business[6].name} style={{ width: '50%' }}/>
 								</div>
 								<input 
-									value='classic' 
+									value='business' 
 									type="checkbox" 
 									style={{ marginLeft: '50%' }} 
-									checked={this.state.bottomStyle.includes('classic')}
+									checked={this.state.bottomStyle.includes('business')}
 									onChange={this.handleChange}
 									name='bottomStyle'
 								/>
@@ -243,7 +243,7 @@ class SurveyPage extends PureComponent {
 					</label>						
 				</Grid>
 				{this.state.parsedItems.rocker.length > 0 ? 
-					(<Grid style={{ height: '24vh', width: '100vw', display: 'flex', flexWrap: 'nowrap', overflowX: 'auto' }}>
+					(<Grid style={{ height: '24vh', minHeight: '308px', width: '100vw', display: 'flex', flexWrap: 'nowrap', overflowX: 'auto' }}>
 						<GridCell>
 							<Card style={{ marginTop: '2em', width: '19em', backgroundColor: white, marginLeft: '9px' }} key='rocker-shoes'>
 								<div style={{ display: 'flex' }}>
@@ -283,10 +283,10 @@ class SurveyPage extends PureComponent {
 									<img src={routeImage + this.state.parsedItems.business[4].image} alt={this.state.parsedItems.business[4].name} style={{ width: '50%' }}/>
 								</div>
 								<input 
-									value='classic' 
+									value='business' 
 									type="checkbox" 
 									style={{ marginLeft: '50%' }} 
-									checked={this.state.shoeStyle.includes('classic')}
+									checked={this.state.shoeStyle.includes('business')}
 									onChange={this.handleChange}
 									name='shoeStyle'
 								/>
@@ -337,4 +337,4 @@ function surveyState(state) {
   }
 }
 
-export default connect(surveyState, { getSurveyProducts, parseSurveyItems })(SurveyPage)
+export default connect(surveyState, { getSurveyProducts, updateStylePref })(SurveyPage)

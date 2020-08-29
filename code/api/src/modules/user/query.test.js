@@ -53,8 +53,23 @@ describe('user queries', () => {
             .send({ query: '{users { email name }}'})
             .expect(200)
         
-        // console.log(response.body.data)
         expect(response.body.data.users.length).toEqual(2)
+    })
+    
+    it('returns one user by id', async () => {
+        const user = await models.User.create({
+            name: "User",
+            email: "user@email.com",
+            password: 12345,
+            styleResult: null
+        })
+        const response = await request(server)
+            .get('/')
+            .send({query: `{ user(id: ${user.id}) { email name}}`})
+            .expect(200)
+            
+        expect(response.body.data.user.name).toEqual('User')
+        expect(response.body.data.user.email).toEqual('user@email.com')
     })
 
     it('can update user style', async () => {
@@ -76,25 +91,5 @@ describe('user queries', () => {
         expect(testUser.styleResult).toEqual('Neat')
         expect(testUser.name).toEqual('User')
         expect(testUser.email).toEqual('user@email.com')
-    })
-    
-    it('returns one user by id', async () => {
-        const user = await models.User.create({
-            name: "User",
-            email: "user@email.com",
-            password: 12345,
-            styleResult: null
-        })
-        const response = await request(server)
-            .get('/')
-            .send({query: `{ user(id: ${user.id}) { email name}}`})
-            .expect(200)
-        //console.log(response.body.data)
-        expect(response.body.data.user.name).toEqual('User')
-        expect(response.body.data.user.email).toEqual('user@email.com')
-    })
-
-    it('is true', () => {
-        expect(true).toBe(true)
     })
 })

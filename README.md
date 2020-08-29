@@ -1,3 +1,5 @@
+![Crate](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/crate/hero-with-link.png)
+
 # Crate 👕👖📦
 ## Contributors
 - Becca Steinbrecher (GitHub: [b-stein](https://github.com/b-stein))
@@ -98,6 +100,9 @@ Info....
     - HTML/SCSS
 - BE
     - GraphQL
+    - Express
+    - Node
+    - Jest/SuperTest
 
 ## Systems/Practices
 - git/Version Control, rebase
@@ -111,6 +116,7 @@ Info....
 
 ## Future Iterations...
 - Make front end testing more robust
+- deploy on Heroku
 
 ## License
 Copyright (c) 2018 Atul Yadav http://github.com/atulmy

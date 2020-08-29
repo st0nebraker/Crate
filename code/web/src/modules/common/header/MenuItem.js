@@ -27,7 +27,8 @@ const MenuItem = (props) => {
         Object.assign({
           padding: '0.6em 1em',
           textTransform: 'uppercase',
-          color: white
+					color: white,
+					fontSize: '1.4vh'
         }, isActiveRoute() ? {
           backgroundImage: (type === 'secondary' ? secondary : primary),
           borderRadius: '1.4em',

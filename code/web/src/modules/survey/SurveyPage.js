@@ -321,19 +321,19 @@ class SurveyPage extends PureComponent {
 
 // Component Properties
 SurveyPage.propTypes = {
-  // subscription: PropTypes.object.isRequired,
-  // user: PropTypes.object.isRequired,
-  // remove: PropTypes.func.isRequired,
-  // getListByUser: PropTypes.func.isRequired,
-  // messageShow: PropTypes.func.isRequired,
-  // messageHide: PropTypes.func.isRequired
+  user: PropTypes.object.isRequired,
+  surveyProducts: PropTypes.object.isRequired,
+	stylePref: PropTypes.object,
+	getSurveyProducts: PropTypes.func.isRequired,
+	updateStylePref: PropTypes.func.isRequired,
 }
 
 // Component State
 function surveyState(state) {
   return {
 		user: state.user,
-		surveyProducts: state.surveyProducts
+		surveyProducts: state.surveyProducts,
+		stylePref: state.stylePreference
   }
 }
 

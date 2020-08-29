@@ -59,7 +59,7 @@ class WhatsNew extends PureComponent {
             isLoading
               ? <Loading/>
               : list && list.length > 0
-                ? list.map(product => (
+                ? list.filter(product => !product.category).map(product => (
                     <GridCell key={product.id} style={{ textAlign: 'center' }}>
                       <ProductItem product={product}/>
                     </GridCell>

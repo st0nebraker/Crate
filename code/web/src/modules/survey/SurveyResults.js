@@ -61,7 +61,7 @@ class SurveyResults extends PureComponent {_
 					<p style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: black }}>My style is...</p>
 					
 					{this.state.styleResult ? 
-						<div>
+						<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 							<img src={routeImage + this.state.styleResult} alt={this.state.styleResult} style={{ width: '60%' }}/>
 							<H4 font="secondary">{this.state.styleName}</H4>
 						</div> : 

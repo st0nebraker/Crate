@@ -31,30 +31,6 @@ class SurveyPage extends PureComponent {
 			shoeStyle: []
 	    }
 	}
-
-	handleChange = (event) => {
-		const { name, value } = event.target
-		if(this.state[name].length < 2 && !this.state[name].includes(value)) {
-			// console.log('event', event.target.checked);
-			this.setState({ [name]: [...this.state[name], value] })
-		} else if (this.state[name].length === 2) {
-			const array = this.state[name].filter(element => element !== value )
-			this.setState({
-				[name]: array
-			})
-		}
-	}
-
-	handleSubmit = () => {
-		const { topStyle, bottomStyle, shoeStyle } = this.state
-		const compileUserInputs = [...topStyle, ...bottomStyle, ...shoeStyle].reduce((acc, style) => {
-			acc[style] ++
-			return acc
-		}, {rocker: 0, bohemian: 0, business: 0, artsy: 0})
-
-		const calculatedStyle = Object.keys(compileUserInputs).sort((a, b) => compileUserInputs[b] - compileUserInputs[a]);
-		console.log(calculatedStyle[0])
-	}
 		
   static fetchData({ store }) {
     return store.dispatch(getSurveyProducts())
@@ -117,7 +93,7 @@ class SurveyPage extends PureComponent {
         </Grid>
 
 				<Grid>
-					<H4 data-testid='stylePage-greeting' font="secondary" style={{ marginLeft: '.2em', marginTop: '1em' }}>Tops</H4>
+					<label><H4 font="secondary" style={{ marginLeft: '.2em', marginTop: '1em' }}>Tops</H4></label>
 				</Grid>
 				{this.state.parsedItems.rocker.length > 0 ? 
 					(<Grid style={{ height: '24vh', minHeight: '308px', width: '100vw', display: 'flex', flexWrap: 'nowrap', overflowX: 'auto' }}>
@@ -334,11 +310,11 @@ class SurveyPage extends PureComponent {
 						</GridCell>
 					</Grid>) : null
 				}
-				<Grid>
-				  <Button theme="secondary" style={{ marginLeft: '50%', marginTop: '2em', marginBottom: '2em' }}>Submit</Button>
-				</Grid>
-				</form>
-			</div>
+			<Grid>
+				<Button theme="secondary" style={{ marginLeft: '50%', marginTop: '2em', marginBottom: '2em' }} onClick={ this.handleSubmit } >Submit</Button>
+			</Grid>
+		</form>
+		</div>
 		)
 	}
 }

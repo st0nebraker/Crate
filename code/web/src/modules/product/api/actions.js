@@ -30,7 +30,7 @@ export function getList(isLoading = true, forceRefresh = false) {
 
     return axios.post(routeApi, query({
       operation: 'products',
-      fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt', 'updatedAt']
+      fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt', 'updatedAt', 'category']
     }))
       .then(response => {
         if (response.status === 200) {
@@ -131,7 +131,7 @@ export function getRelatedList(productId, isLoading = true) {
       return axios.post(routeApi, query({
         operation: 'productsRelated',
         variables: { productId },
-        fields: ['id', 'name', 'slug', 'description', 'image']
+        fields: ['id', 'name', 'slug', 'description', 'image', 'category']
       }))
         .then(response => {
           if (response.status === 200) {

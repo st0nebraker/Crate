@@ -17,6 +17,7 @@ import userRoutes from '../../setup/routes/user'
 import surveyRoutes from '../../setup/routes/survey'
 import { messageShow, messageHide } from '../common/api/actions'
 import { create } from '../subscription/api/actions'
+import { getStylePref } from '../survey/api/actions'
 
 // Component
 class Item extends PureComponent {
@@ -27,7 +28,7 @@ class Item extends PureComponent {
     this.state = {
       isLoading: false
     }
-  }
+	}
 
 	onClickSubscribe = (crateId) => {		
 		this.setState({
@@ -35,7 +36,6 @@ class Item extends PureComponent {
 		})
 		
 		if (!this.props.stylePref.style) {
-			// this.props.messageShow('Loading Style Survey...')
 			this.props.history.push(surveyRoutes.survey.path)
 			
 		} else {
@@ -112,4 +112,4 @@ function itemState(state) {
   }
 }
 
-export default connect(itemState, { create, messageShow, messageHide })(withRouter(Item))
+export default connect(itemState, { create, messageShow, messageHide, getStylePref })(withRouter(Item))

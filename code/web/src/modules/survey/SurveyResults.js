@@ -9,6 +9,7 @@ import { Helmet } from 'react-helmet'
 import { Grid, GridCell } from '../../ui/grid'
 import { white, grey, grey2, black } from '../../ui/common/colors'
 import Button from '../../ui/button/Button'
+import Icon from '../../ui/icon'
 import Card from '../../ui/card/Card'
 import { H3, H4 } from '../../ui/typography'
 
@@ -62,7 +63,7 @@ class SurveyResults extends PureComponent {_
 				
 					<div style={{ width: '70%', display: 'flex', justifyContent: 'space-evenly' }}>
 						<Link to={crateRoutes.list.path}>
-							<Button theme="secondary">Find Subscription</Button>
+							<Button theme="secondary">Subscribe <Icon size={1.2} style={{ color: white }}>navigate_next</Icon></Button>
 						</Link>
 
 						<Link to={surveyRoutes.survey.path}>

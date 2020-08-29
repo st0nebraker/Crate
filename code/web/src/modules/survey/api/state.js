@@ -1,5 +1,4 @@
 import {
-	STYLE_PREF_REQUEST,
 	STYLE_PREF_RESPONSE,
 	PRODUCTS_GET_LIST_FAILURE,
 	UPDATE_STYLE_PREF,
@@ -28,13 +27,6 @@ export const stylePreference = (state = styleInitialState, action) => {
 				...state,
 				style: action.styleResult,
 				error: null
-			}
-
-		case STYLE_PREF_REQUEST:
-			return {
-				...state,
-				error: null,
-				style: action.styleResult
 			}
 
 		case STYLE_PREF_RESPONSE:

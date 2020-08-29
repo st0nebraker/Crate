@@ -17,7 +17,7 @@ import { APP_URL } from '../../setup/config/env'
 import { routeImage, routes } from '../../setup/routes'
 import surveyRoutes from '../../setup/routes/survey'
 import { messageShow, messageHide } from '../common/api/actions'
-import { getSurveyProducts, updateStylePref } from './api/actions'
+import { getSurveyProducts, getStylePref, updateStylePref } from './api/actions'
 
 // Component
 class SurveyPage extends PureComponent {
@@ -333,8 +333,9 @@ SurveyPage.propTypes = {
 function surveyState(state) {
   return {
 		user: state.user,
-		surveyProducts: state.surveyProducts
+		surveyProducts: state.surveyProducts,
+		stylePref: state.stylePreference
   }
 }
 
-export default connect(surveyState, { getSurveyProducts, updateStylePref })(SurveyPage)
+export default connect(surveyState, { getSurveyProducts, getStylePref, updateStylePref })(SurveyPage)

@@ -18,9 +18,9 @@ export const SURVEY_GET_LIST_FAILURE = 'SURVEY_GET_LIST_FAILURE'
 export function updateStylePref(id, styleResult) {
   return dispatch => {
     return axios.post(routeApi, mutation({
-		  operation: 'userUpdate', //fn name in query/mutation files
-			variables: { id, styleResult }, // user id //the args in that fn
-      fields: ['styleResult'] //fields in type file
+		  operation: 'userUpdate',
+			variables: { id, styleResult },
+      fields: ['styleResult']
     }))
       .then(response => {
         if (response.status === 200) {
@@ -31,13 +31,13 @@ export function updateStylePref(id, styleResult) {
           })
         }
       })
-      // .catch(error => {
-      //     dispatch({
-      //       type: UPDATE_STYLE_PREF_FAILURE,//make reducer for
-      //       error: 'Some error occurred. Please try again.',
-      //       isLoading: false
-      //     })
-      // })
+      .catch(error => {
+          dispatch({
+            type: UPDATE_STYLE_PREF_FAILURE,
+            error: 'Some error occurred. Please try again.',
+            isLoading: false
+          })
+      })
   }
 }
 

@@ -18,6 +18,7 @@ import { APP_URL } from '../../setup/config/env'
 import { routeImage, routes } from '../../setup/routes'
 import crateRoutes from '../../setup/routes/crate'
 import surveyRoutes from '../../setup/routes/survey'
+import EmptyMessage from '../common/EmptyMessage'
 import { messageShow, messageHide } from '../common/api/actions'
 import { getSurveyProducts, parseSurveyItems } from './api/actions'
 
@@ -26,7 +27,7 @@ class SurveyResults extends PureComponent {_
 	constructor(props) {
 		super(props)
 		this.state = {
-			styleResult: {},
+			styleResult: null,
 			styleName: null
 		}
 	}
@@ -58,9 +59,15 @@ class SurveyResults extends PureComponent {_
 			<Grid style={{ display: 'flex', flexDirection: 'column', height: '80vh', justifyContent: 'space-between', alignItems: 'center', margiTop: '4em' }}>
 				<Card style={{ display: 'flex', height: '70vh', flexDirection: 'column', justifyContent: 'space-evenly', alignItems: 'center', width: '80vw', backgroundColor: white, marginTop: '2em' }} key='style-result'>
 					<p style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: black }}>My style is...</p>
-					<img src={routeImage + this.state.styleResult} alt={this.state.styleResult} style={{ width: '60%' }}/>
-					<H4 font="secondary">{this.state.styleName}</H4>
-				
+					
+					{this.state.styleResult ? 
+						<div>
+							<img src={routeImage + this.state.styleResult} alt={this.state.styleResult} style={{ width: '60%' }}/>
+							<H4 font="secondary">{this.state.styleName}</H4>
+						</div> : 
+						<EmptyMessage message="No set style, click Change Style to take the survey!" />
+					}
+					
 					<div style={{ width: '70%', display: 'flex', justifyContent: 'space-evenly' }}>
 						<Link to={crateRoutes.list.path}>
 							<Button theme="secondary">Subscribe <Icon size={1.2} style={{ color: white }}>navigate_next</Icon></Button>
@@ -79,12 +86,10 @@ class SurveyResults extends PureComponent {_
 
 // Component Properties
 SurveyResults.propTypes = {
-  // subscription: PropTypes.object.isRequired,
-  // user: PropTypes.object.isRequired,
-  // remove: PropTypes.func.isRequired,
-  // getListByUser: PropTypes.func.isRequired,
-  // messageShow: PropTypes.func.isRequired,
-  // messageHide: PropTypes.func.isRequired
+	user: PropTypes.object.isRequired,
+	surveyProducts: PropTypes.object.isRequired,
+	stylePref: PropTypes.object,
+	getSurveyProducts: PropTypes.func.isRequired,
 }
 
 function resultState(state) {

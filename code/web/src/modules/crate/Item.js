@@ -9,7 +9,7 @@ import Card from '../../ui/card/Card'
 import Button from '../../ui/button/Button'
 import H4 from '../../ui/typography/H4'
 import Icon from '../../ui/icon'
-import { white, grey2, black } from '../../ui/common/colors'
+import { white, grey2, black, grey } from '../../ui/common/colors'
 
 // App Imports
 import { APP_URL } from '../../setup/config/env'
@@ -17,7 +17,6 @@ import userRoutes from '../../setup/routes/user'
 import surveyRoutes from '../../setup/routes/survey'
 import { messageShow, messageHide } from '../common/api/actions'
 import { create } from '../subscription/api/actions'
-import { getStylePref } from '../survey/api/actions'
 
 // Component
 class Item extends PureComponent {
@@ -70,7 +69,7 @@ class Item extends PureComponent {
     const { isLoading } = this.state
 
     return (
-			<Card style={{ width: '18em', backgroundColor: white }}>
+			<Card style={{ width: '18em', backgroundColor: white, maxHeight: '417px', display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly' }}>
         <p style={{ padding: '2em 3em 0 3em' }}>
           <img src={`${ APP_URL }/images/crate.png`} alt={name} style={{ width: '100%' }}/>
         </p>
@@ -81,14 +80,26 @@ class Item extends PureComponent {
           <p style={{ color: grey2, marginTop: '1em' }}>{description}</p>
 
           <p style={{ textAlign: 'center', marginTop: '1.5em', marginBottom: '1em' }}>
-            <Button
-              theme="primary"
-              onClick={this.onClickSubscribe.bind(this, id)}
-              type="button"
-              disabled={ isLoading }
-            >
-              <Icon size={1.2} style={{ color: white }}>add</Icon> Subscribe
-            </Button>
+						{this.props.userSubscriptions.list.find(crate => crate.crate.id === id) ? 
+							<div>
+								<Button
+									theme="primary"
+									type="button"
+									disabled='true'
+								>
+									<Icon size={1.2} style={{ color: white }}>add</Icon> Subscribe
+								</Button>
+								<p style={{ color: grey2, fontStyle: 'italic', marginTop: '4px' }}>Subscribed</p>
+							</div> : 
+							<Button
+								theme="primary"
+								onClick={this.onClickSubscribe.bind(this, id)}
+								type="button"
+								disabled={ isLoading }
+							>
+								<Icon size={1.2} style={{ color: white }}>add</Icon> Subscribe
+							</Button>
+						}
           </p>
         </div>
       </Card>
@@ -108,8 +119,9 @@ Item.propTypes = {
 function itemState(state) {
   return {
 		user: state.user,
-		stylePref: state.stylePreference
+		stylePref: state.stylePreference,
+		userSubscriptions: state.subscriptionsByUser
   }
 }
 
-export default connect(itemState, { create, messageShow, messageHide, getStylePref })(withRouter(Item))
+export default connect(itemState, { create, messageShow, messageHide })(withRouter(Item))

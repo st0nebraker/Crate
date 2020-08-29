@@ -17,7 +17,7 @@ import { APP_URL } from '../../setup/config/env'
 import { routeImage, routes } from '../../setup/routes'
 import surveyRoutes from '../../setup/routes/survey'
 import { messageShow, messageHide } from '../common/api/actions'
-import { getSurveyProducts, getStylePref, updateStylePref } from './api/actions'
+import { getSurveyProducts, updateStylePref } from './api/actions'
 
 // Component
 class SurveyPage extends PureComponent {
@@ -321,12 +321,11 @@ class SurveyPage extends PureComponent {
 
 // Component Properties
 SurveyPage.propTypes = {
-  // subscription: PropTypes.object.isRequired,
-  // user: PropTypes.object.isRequired,
-  // remove: PropTypes.func.isRequired,
-  // getListByUser: PropTypes.func.isRequired,
-  // messageShow: PropTypes.func.isRequired,
-  // messageHide: PropTypes.func.isRequired
+  user: PropTypes.object.isRequired,
+  surveyProducts: PropTypes.object.isRequired,
+	stylePref: PropTypes.object,
+	getSurveyProducts: PropTypes.func.isRequired,
+	updateStylePref: PropTypes.func.isRequired,
 }
 
 // Component State
@@ -338,4 +337,4 @@ function surveyState(state) {
   }
 }
 
-export default connect(surveyState, { getSurveyProducts, getStylePref, updateStylePref })(SurveyPage)
+export default connect(surveyState, { getSurveyProducts, updateStylePref })(SurveyPage)

@@ -1,5 +1,3 @@
-![Crate](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/crate/hero-with-link.png)
-
 # Crate 👕👖📦
 ## Contributors
 - Becca Steinbrecher (GitHub: [b-stein](https://github.com/b-stein))

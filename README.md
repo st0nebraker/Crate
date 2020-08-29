@@ -27,7 +27,7 @@ Info....
 - Written in ES6+ using Babel + Webpack
 - Designed using Adobe Experience Design. Preview it [here](https://xd.adobe.com/view/a662a49f-57e7-4ffd-91bd-080b150b0317/).
 
-## Features
+#### Features
 - Modular and easily scalable code structure
 - Emphasis on developer experience
 - UI components in separate folder which can be swapped for your favorite UI framework easily
@@ -40,7 +40,7 @@ Info....
 - Server side rendering
 - Multi-package setup and dev scripts for an automated dev experiance
 
-## Useful for
+#### Useful for
 - Developers with basic knowledge on React exploring advance React projects
 - Developers learning React Native
 - Exploring GraphQL
@@ -51,8 +51,6 @@ Info....
 
 ## In Action
 ### Desktop
-[IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/crate/desktop-all-with-link.png)
-
 ![Crate Desktop](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/crate/desktop-all-with-link.png)
 
 ## Setup and Running

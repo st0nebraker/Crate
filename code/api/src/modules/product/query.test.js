@@ -188,11 +188,55 @@ describe('product query', () => {
     expect(response.body.data.productTypes.name).not.toEqual("Shoes");
   })
 
-  it("returns a related product", async () => {
+  it("returns at most 3 related products", async () => {
+    const newProduct = await models.Product.create({
+      name: "boho Boots",
+      slug: "boho-boots",
+      description: "Rock n Roll",
+      image: "/images/quiz/rocker-shoes1.png",
+      style: "bohemian",
+      isSurvey: false,
+      category: "shoes",
+    })
     const response = await request(server)
       .get("/")
-      .send({ query: "{productsRelated (productId: 123) { name type id }}" })
+      .send({ query: `query {productsRelated (productId: ${newProduct.id}) { name type id }}` })
 
-    expect(response.body.data.productsRelated).toEqual(null);
+      // More than 3 products have bohemian style, but only 3 should be returned
+    expect(response.body.data.productsRelated.length).toEqual(3);
+  })
+
+  it("returns fewer than 3 related products if 3 do not exist", async () => {
+    const product = await models.Product.create({
+      name: "art Boots",
+      slug: "art-boots",
+      description: "Rock n Roll",
+      image: "/images/quiz/rocker-shoes1.png",
+      style: "artsy",
+      isSurvey: false,
+      category: "shoes",
+    })
+    const response = await request(server)
+      .get("/")
+      .send({ query: `query {productsRelated (productId: ${product.id}) { name type id }}` })
+
+    expect(response.body.data.productsRelated.length).toEqual(1);
+    expect(response.body.data.productsRelated[0].name).toEqual('Soup Shirt');
+  })
+  it("returns an empty array if no related products exist", async () => {
+    const product = await models.Product.create({
+      name: "unique Boots",
+      slug: "unique-boots",
+      description: "Rock n Roll",
+      image: "/images/quiz/rocker-shoes1.png",
+      style: "unique",
+      isSurvey: false,
+      category: "shoes",
+    })
+    const response = await request(server)
+      .get("/")
+      .send({ query: `query {productsRelated (productId: ${product.id}) { name type id }}` })
+
+    expect(response.body.data.productsRelated).toEqual([]);
   })
 })

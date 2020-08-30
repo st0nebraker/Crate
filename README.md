@@ -45,10 +45,11 @@ Previous, base features of this application include...
 ### Bugs fixed
 #### Subscribed crates are disabled from subscribing to again
 <img width="354" alt="Screen Shot 2020-08-30 at 1 21 38 PM" src="https://user-images.githubusercontent.com/59381432/91667716-d9b10200-eac3-11ea-867c-2864ef9258a6.png">
-#### Product details can be opened, related products query no longer returns null
+
+#### Product details can be viewed
 <img width="412" alt="Screen Shot 2020-08-30 at 1 21 45 PM" src="https://user-images.githubusercontent.com/59381432/91667720-dae22f00-eac3-11ea-8c35-e6dd535865da.png">
 ### Desktop
-![Crate Desktop](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/crate/desktop-all-with-link.png)
+![Crate Desktop(https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/crate/desktop-all-with-link.png)
 
 ## Setup and Running
 - Prerequisites

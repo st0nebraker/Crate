@@ -16,9 +16,9 @@
 - Practice an advanced, professional git workflow: rebase
 
 ## Overview
-A fullstack group [project](https://mod4.turing.io/projects/crate/crate.html) at Turing School of Software and Design using.
+A fullstack group [project](https://mod4.turing.io/projects/crate/crate.html) at Turing School of Software and Design. This project builds on top of a pre-existing larger codebase. This team was tasked with adding a feature to give a user the ability to fill out a survey to analyze their personal style. The team learned GraphQL and Redux in the process of implementing code to a production level codebase. They additionally added in testing coverage and fixed two existing bugs.
 
-Info....
+Previous, base features of this application include...
 
 #### Get monthly subscription of trendy clothes and accessories.
 - **API** built with Node, GraphQL, Express, Sequelize (MySQL) and JWT Auth
@@ -40,18 +40,15 @@ Info....
 - Server side rendering
 - Multi-package setup and dev scripts for an automated dev experiance
 
-#### Useful for
-- Developers with basic knowledge on React exploring advance React projects
-- Developers learning React Native
-- Exploring GraphQL
-- Scalable project structure and code
-- Starter application for Mobile and Web along with SSR
-- Multi-package scripts
-- Sample project with combination of all above
-
 ## In Action
 ### Desktop
 ![Crate Desktop](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/crate/desktop-all-with-link.png)
+### Style Survey feature
+![Taking Survey](https://media.giphy.com/media/j1nqNafHNXnr5gwjiW/giphy.gif)
+![Survey Results](https://media.giphy.com/media/Pj6w0pEgOXYDKYAbN4/giphy.gif)
+### Bugs fixed
+<img width="354" alt="Screen Shot 2020-08-30 at 1 21 38 PM" src="https://user-images.githubusercontent.com/59381432/91667716-d9b10200-eac3-11ea-867c-2864ef9258a6.png">
+<img width="412" alt="Screen Shot 2020-08-30 at 1 21 45 PM" src="https://user-images.githubusercontent.com/59381432/91667720-dae22f00-eac3-11ea-8c35-e6dd535865da.png">
 
 ## Setup and Running
 - Prerequisites
@@ -78,7 +75,7 @@ Info....
   - Run API `cd api` and `npm run start:prod`, creates an optimized build in `build` directory and runs the server
   - Run Webapp `cd web` and `npm run start:prod`, creates an optimized build in `build` directory and runs the server
 
-## Multi-package automation
+### Multi-package automation
 - New developers are advised to run through the above 'setup and running' process before reading further.
 - Optional multi-package automation for faster setup and easier dev environment initiation.
 - No need to cd to sub-folders unless working with mobile or running a production build.
@@ -116,7 +113,7 @@ Info....
 
 ## Future Iterations...
 - Make front end testing more robust
-- deploy on Heroku
+- Deploy on Heroku & setup CI with Travis CI
 
 ## License
 Copyright (c) 2018 Atul Yadav http://github.com/atulmy

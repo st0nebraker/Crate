@@ -41,6 +41,7 @@ Previous, base features of this application include...
 ## In Action
 ### Style Survey feature
 ![Taking Survey](https://media.giphy.com/media/j1nqNafHNXnr5gwjiW/giphy.gif)
+
 ![Survey Results](https://media.giphy.com/media/Pj6w0pEgOXYDKYAbN4/giphy.gif)
 ### Bugs fixed
 #### Subscribed crates are disabled from subscribing to again

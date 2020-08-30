@@ -1,5 +1,3 @@
-![Crate](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/crate/hero-with-link.png)
-
 # Crate 👕👖📦
 ## Contributors
 - Becca Steinbrecher (GitHub: [b-stein](https://github.com/b-stein))
@@ -41,14 +39,16 @@ Previous, base features of this application include...
 - Multi-package setup and dev scripts for an automated dev experiance
 
 ## In Action
-### Desktop
-![Crate Desktop](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/crate/desktop-all-with-link.png)
 ### Style Survey feature
 ![Taking Survey](https://media.giphy.com/media/j1nqNafHNXnr5gwjiW/giphy.gif)
 ![Survey Results](https://media.giphy.com/media/Pj6w0pEgOXYDKYAbN4/giphy.gif)
 ### Bugs fixed
+#### Subscribed crates are disabled from subscribing to again
 <img width="354" alt="Screen Shot 2020-08-30 at 1 21 38 PM" src="https://user-images.githubusercontent.com/59381432/91667716-d9b10200-eac3-11ea-867c-2864ef9258a6.png">
+#### Product details can be opened, related products query no longer returns null
 <img width="412" alt="Screen Shot 2020-08-30 at 1 21 45 PM" src="https://user-images.githubusercontent.com/59381432/91667720-dae22f00-eac3-11ea-8c35-e6dd535865da.png">
+### Desktop
+![Crate Desktop](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/crate/desktop-all-with-link.png)
 
 ## Setup and Running
 - Prerequisites
